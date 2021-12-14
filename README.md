@@ -1,4 +1,4 @@
-# Thales Frontend
+# Supermind Client
 
 A neat little console for interacting with Thales. Can be password protected and deployed to the internet for safe, secure chatbot fun.
 
