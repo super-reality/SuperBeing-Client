@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Chat from './Chat';
 import backButton from "./ArrowLeft.svg";
+import axios from "axios";
 
 const App = () => {
   const [formInputs, setFormInputs] = useState({ agentName: '' });
@@ -8,11 +9,22 @@ const App = () => {
 
   const { agentName } = formInputs;
 
+  const sendMessage = async (agentName) => {
+    const body = { agent:agentName, command: "/become " + agentName };
+    axios.post(`http://localhost:65535/execute`, body).then(res => {
+
+      console.log(messageData);
+    });
+  };
+
   const onChange = (e) =>
     setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
 
   const startConversation = () => {
     if (agentName) {
+      sendMessage(agentName);
+      // TODO, should have a little fade from UI to this, and maybe loading indicator
+      // So request has time to process
       setShowChat(true);
     }
   };
