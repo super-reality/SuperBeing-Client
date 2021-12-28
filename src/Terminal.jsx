@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Terminal from "terminal-in-react";
+import React from "react";
 
 function App() {
   const endpoint = "http://localhost:65533";

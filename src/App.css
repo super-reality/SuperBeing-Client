@@ -1,0 +1,232 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  color: #212121;
+  font-family: 'Open Sans', sans-serif;
+  display: grid;
+  place-items: center;
+}
+body {
+  margin: 0%;
+  padding: 0%;
+}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+
+.ChatWrapper {
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+}
+
+.back {
+  position: fixed;
+  left:2em;
+  top: 2em;
+}
+
+.logo-big {
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+}
+
+.logo-small {
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  width:25%;
+  height:25%;
+  top: 5em;
+  z-index:10000;
+}
+
+
+.joinChatContainer {
+  flex-direction: column;
+  text-align: center;
+  vertical-align: middle;
+  width:100%;
+  height:100%;
+  position:absolute;
+}
+
+.joinChatContainer input {
+  width: 30em;
+  height: 1em;
+  border: 2px solid #ccc;
+  border-radius: 2em;
+  padding: 1em;
+  font-size: 16px;
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.joinChatContainer button {
+  width: 1.5em;
+  height: 1.5em;
+  border: none;
+  padding: 0;
+  background-color: rgba(0,0,0,0);
+  background-image: url("./ArrowRight.svg"); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+  position:relative;
+  left:-2.25em;
+}
+
+.chat-window {
+  width: 100%;
+  max-width: 600px;
+  height: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chat-window p {
+  margin: 0;
+}
+
+.chat-window .chat-body {
+  height: 100%;
+  background: #fff;
+
+  position: relative;
+}
+.chat-window .chat-body .message-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.chat-window .chat-body .message-container::-webkit-scrollbar {
+  display: none;
+}
+.chat-window .chat-body .message {
+  height: auto;
+  padding-bottom: 10px;
+  display: flex;
+}
+
+.chat-window .chat-body .message .message-content {
+  width: auto;
+  height: auto;
+  min-height: 3em;
+  max-width: 95%;
+  border-radius: 5px;
+  color: #777777;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.chat-window .chat-body .message > div {
+width:100%;
+min-width:100%;
+}
+
+
+#you {
+  justify-content: flex-start;
+}
+
+#you .message-content {
+  justify-content: flex-start;
+}
+
+#you .message-meta {
+  justify-content: flex-start;
+  margin-left: 5px;
+}
+
+#other {
+  justify-content: flex-end;
+  width:100%;
+}
+
+#other .message-content {
+  justify-content: flex-end;
+}
+
+#other .message-meta {
+  justify-content: flex-end;
+  margin-right: 5px;
+}
+
+.message-meta #author {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.chat-window .chat-body .message .message-meta {
+  display: flex;
+  font-size: 12px;
+}
+
+.joinChatContainer {
+  flex-direction: column;
+  text-align: center;
+  vertical-align: middle;
+  width:100%;
+  height:100%;
+  position:absolute;
+}
+
+
+.chat-window .chat-footer {
+  flex-direction: column;
+  text-align: center;
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+}
+
+.chat-window .chat-footer input {
+  width: 30em;
+  height: 1em;
+  border: 2px solid #ccc;
+  border-radius: 2em;
+  padding: 1em;
+  font-size: 16px;
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.chat-window .chat-footer button {
+  width: 1.5em;
+  height: 1.5em;
+  border: none;
+  padding: 0;
+  background-color: rgba(0,0,0,0);
+  background-image: url("./ArrowRight.svg"); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+  position:relative;
+  left:-2.25em;
+}
+
+.hide {
+  opacity: 0 !important;
+}
