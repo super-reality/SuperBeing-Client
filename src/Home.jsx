@@ -22,6 +22,8 @@ const App = () => {
       {showChat ? (
         <div className="ChatWrapper">
           <img src="/Logo.jpg" className="logo-small" />
+          <div className="TalkingTo">Talking to <b>{agentName}</b></div>
+
           <div className="back">
             <img src={backButton} onClick={() => setShowChat(false)} />
           </div>
@@ -35,6 +37,9 @@ const App = () => {
             placeholder="Who or what do you want to talk to?"
             name="agentName"
             value={agentName}
+            onKeyPress={(event) => {
+              event.key === 'Enter' && startConversation();
+            }}
             onChange={onChange}
           />
           <button onClick={startConversation} />

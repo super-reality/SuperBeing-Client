@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import axios from "axios";
-import sendButton from "./ArrowRight.svg";
 
 const senderName = "Guest";
 
@@ -56,7 +55,7 @@ const Chat = ({ agentName }) => {
         <input
           type="text"
           name="message"
-          placeholder="hello..."
+          placeholder="What would you like to say?"
           value={currentMessage}
           onChange={(e) => setCurrentMessage(e.target.value)}
           onKeyPress={(event) => {

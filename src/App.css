@@ -83,6 +83,11 @@ body {
   left:-2.25em;
 }
 
+.TalkingTo {
+  width: 100%;
+  text-align:center;
+}
+
 .chat-window {
   width: 100%;
   max-width: 600px;
