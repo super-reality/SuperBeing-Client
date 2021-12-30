@@ -4,11 +4,12 @@ import axios from "axios";
 
 const senderName = "Guest";
 
-const Chat = ({ agentName }) => {
+const Chat = ({ agentImage, agentName }) => {
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
 
   const sendMessage = async () => {
+      console.log("agentImage", agentImage)
     if (currentMessage) {
         const messageData = {
             message: currentMessage,
@@ -42,6 +43,9 @@ const Chat = ({ agentName }) => {
                 key={idx}
               >
                 <div>
+                    <div className="message-image">
+                        {/* {agentImage} */}
+                    </div>
                   <div className="message-content">
                     <p>{messageContent.message}</p>
                   </div>

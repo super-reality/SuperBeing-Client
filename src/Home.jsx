@@ -6,14 +6,19 @@ import axios from "axios";
 const App = () => {
   const [formInputs, setFormInputs] = useState({ agentName: '' });
   const [showChat, setShowChat] = useState(false);
+  const [agentImage, setAgentImage] = useState(null);
 
   const { agentName } = formInputs;
 
   const sendMessage = async (agentName) => {
     const body = { agent:agentName, command: "/become " + agentName };
     axios.post(`http://localhost:65535/execute`, body).then(res => {
-
-      console.log(messageData);
+    console.log("res");
+      console.log(res);
+      if(res.data.image){
+        console.log("Has agent image")
+        setAgentImage(res.data.image);
+      }
     });
   };
 
@@ -39,7 +44,7 @@ const App = () => {
           <div className="back">
             <img src={backButton} onClick={() => setShowChat(false)} />
           </div>
-          <Chat agentName={agentName} />
+          <Chat agentImage={agentImage} agentName={agentName} />
           </div>
       ) : (
         <div className="joinChatContainer">
