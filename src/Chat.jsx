@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import axios from "axios";
+import connectionUrl from "./connectionUrl";
 
 const senderName = "Guest";
 
