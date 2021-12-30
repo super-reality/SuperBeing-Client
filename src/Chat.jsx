@@ -17,7 +17,7 @@ const Chat = ({ agentImage, agentName }) => {
           };
 
     const body = { sender:senderName, agent:agentName, command: currentMessage };
-    axios.post(`http://localhost:65535/execute`, body).then(res => {
+    axios.post(`${connectionUrl}/execute`, body).then(res => {
       console.log("response is", res);
       const messageData = {
         message: res.data.result,
