@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Chat from './Chat';
 import backButton from "./ArrowLeft.svg";
 import axios from "axios";
 import connectionUrl from "./connectionUrl";
+import doCORSRequest from "./ImageRequester";
 
 const App = () => {
   const [formInputs, setFormInputs] = useState({ agentName: '' });
-  const [showChat, setShowChat] = useState(false);
+  const [pageState, setPageState] = useState(0); //0 main, 1 loading, 2 chat
   const [agentImage, setAgentImage] = useState(null);
 
   const { agentName } = formInputs;
-
+  
   const sendMessage = async (agentName) => {
     const body = { agent:agentName, command: "/become " + agentName };
     axios.post(`${connectionUrl}/execute`, body).then(res => {
-    console.log("res");
-      console.log(res);
-      if(res.data.image){
-        console.log("Has agent image")
-        setAgentImage(res.data.image);
-      }
+      doCORSRequest(`https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${res.data.keyword}`, (data) => { 
+        if (!data || data.length <= 0) {
+          data = '/Logo.jpg';
+        }
+
+        setAgentImage(data);
+        setPageState(2);
+      });
     });
   };
 
@@ -31,23 +34,24 @@ const App = () => {
       sendMessage(agentName);
       // TODO, should have a little fade from UI to this, and maybe loading indicator
       // So request has time to process
-      setShowChat(true);
+      setPageState(1);
+      //setShowChat(true);
     }
   };
 
   return (
     <div className="App">
-      {showChat ? (
+      {pageState === 2 ? (
         <div className="ChatWrapper">
-          <img src="/Logo.jpg" className="logo-small" />
+          <img src={agentImage} alt="agent_image" className="logo-small" />
           <div className="TalkingTo">Talking to <b>{agentName}</b></div>
 
           <div className="back">
-            <img src={backButton} onClick={() => setShowChat(false)} />
+            <img src={backButton} onClick={() => setPageState(0)} />
           </div>
           <Chat agentImage={agentImage} agentName={agentName} />
           </div>
-      ) : (
+      ) : ((pageState === 0 || pageState === null || pageState === undefined) ? (
         <div className="joinChatContainer">
             <img src="/Logo.jpg" className="logo-big" />
           <input
@@ -62,7 +66,12 @@ const App = () => {
           />
           <button onClick={startConversation} />
         </div>
-      )}
+      ) : (
+        <div className="joinChatContainer">
+            <img src="/Logo.jpg" className="logo-big" />
+            <h2>Loading</h2>
+        </div>
+      ))}
     </div>
   );
 };
