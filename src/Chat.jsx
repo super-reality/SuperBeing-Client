@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import axios from "axios";
+import { getRandomStartingMessage } from './utils';
 
 const senderName = "Guest";
 
-const Chat = ({ agentImage, agentName }) => {
+const Chat = ({ agentImage, agentName }) => {  
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
+  const [firstLoad, setFirstLoad] = useState(false);
+  const [firstMessage, setFirstMessage] = useState(false);
 
   const sendMessage = async () => {
       console.log("agentImage", agentImage)
@@ -30,10 +33,28 @@ const Chat = ({ agentImage, agentName }) => {
       setCurrentMessage('');
     }
   };
+  const sendMessageWithContent = async (msg) => {
+    const body = { sender:senderName, agent:agentName, command: msg };
+    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
+      console.log("response is", res);
+      const messageData = {
+        message: res.data.result,
+        isAgent: true
+      };
+      setMessageList((list) => [...list, messageData]);
+      setFirstMessage(true);
+    }); 
+  };
+
+  if (firstLoad === false) {
+    sendMessageWithContent(getRandomStartingMessage());
+    setFirstLoad(true);
+  }
 
   return (
     <div className="chat-window">
       <div className="chat-body">
+      { firstMessage ? (
         <ScrollToBottom className="message-container">
           {messageList.map((messageContent, idx) => {
             return (
@@ -54,7 +75,11 @@ const Chat = ({ agentImage, agentName }) => {
             );
           })}
         </ScrollToBottom>
+        ) : (
+          <h1>Loading...</h1>
+        )}
       </div>
+      { firstMessage ? (
       <div className="chat-footer">
         <input
           type="text"
@@ -67,6 +92,9 @@ const Chat = ({ agentImage, agentName }) => {
           }}
         /><button onClick={sendMessage} />
       </div>
+    ) : (
+      <h1></h1>
+    )}
     </div>
   );
 };

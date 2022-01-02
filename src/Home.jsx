@@ -31,8 +31,6 @@ const App = () => {
   const startConversation = () => {
     if (agentName) {
       sendMessage(agentName);
-      // TODO, should have a little fade from UI to this, and maybe loading indicator
-      // So request has time to process
       setPageState(1);
     }
   };
@@ -45,7 +43,7 @@ const App = () => {
           <div className="TalkingTo">Talking to <b>{agentName}</b></div>
 
           <div className="back">
-            <img src={backButton} onClick={() => setShowChat(false)} />
+            <img src={backButton} onClick={() => setPageState(0)} />
           </div>
           <Chat agentImage={agentImage} agentName={agentName} />
           </div>
