@@ -1,2 +1,3 @@
-export const connectionUrl="https://superreality-backend.herokuapp.com";
-export default connectionUrl;
+export const connectionUrl= "http://localhost:65535";
+export default connectionUrl
+export const corsUrl = "http://localhost:65534/";
