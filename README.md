@@ -2,6 +2,8 @@
 
 A neat little console for interacting with Thales. Can be password protected and deployed to the internet for safe, secure chatbot fun.
 
+Before running the client rename the .env.default to .env and set the URL variables to your IP/Ports you want to use
+
 ## Available Scripts
 
 In the project directory, you can run:
