@@ -1,12 +1,15 @@
 import {
-  defineConfig
+  defineConfig, loadEnv
 } from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
+import env from 'vite-plugin-env-compatible'
 const reactSvgPlugin = require('vite-plugin-react-svg');
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [reactSvgPlugin(), reactRefresh()],
+  plugins: [reactSvgPlugin(), reactRefresh(), env({ prefix: 'VITE_' })],
+  
   server: {
     fs: {
       allow: ["src", "./"]

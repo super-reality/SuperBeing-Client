@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Terminal from "terminal-in-react";
 import React from "react";
-import connectionUrl from "./connectionUrl";
 
 function App() {
   const endpoint = "http://localhost:65533";
@@ -61,13 +60,13 @@ function App() {
     if(senderName == ""){
       setSenderName(input);
       const body = { sender: senderName, command: "GET_AGENT_NAME"  };
-      axios.post(`${connectionUrl}/execute`, body).then(res => {
+      axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
         setAgentName(res.data.result);
       });
     }
       // TODO: Handle sender
       const body = { sender:senderName, command: input.join(" ") };
-      axios.post(`${connectionUrl}/execute`, body).then(res => {
+      axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
         console.log("response is", res);
         console.log(agentName + " > " + res.data.result);
       });

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import axios from "axios";
-import connectionUrl from "./connectionUrl";
 
 const senderName = "Guest";
 
@@ -18,7 +17,7 @@ const Chat = ({ agentImage, agentName }) => {
           };
 
     const body = { sender:senderName, agent:agentName, command: currentMessage };
-    axios.post(`${connectionUrl}/execute`, body).then(res => {
+    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
       console.log("response is", res);
       const messageData = {
         message: res.data.result,
