@@ -6,7 +6,7 @@ import doCORSRequest from "./ImageRequester";
 
 const App = () => {
   const [formInputs, setFormInputs] = useState({ agentName: '' });
-  const [showChat, setShowChat] = useState(false);
+  const [pageState, setPageState] = useState(0);
   const [agentImage, setAgentImage] = useState(null);
 
   const { agentName } = formInputs;
@@ -33,15 +33,15 @@ const App = () => {
       sendMessage(agentName);
       // TODO, should have a little fade from UI to this, and maybe loading indicator
       // So request has time to process
-      setShowChat(true);
+      setPageState(1);
     }
   };
 
   return (
     <div className="App">
-      {showChat ? (
+      {pageState === 2 ? (
         <div className="ChatWrapper">
-          <img src="/Logo.jpg" className="logo-small" />
+          <img src={agentImage} className="logo-small" />
           <div className="TalkingTo">Talking to <b>{agentName}</b></div>
 
           <div className="back">
@@ -49,7 +49,7 @@ const App = () => {
           </div>
           <Chat agentImage={agentImage} agentName={agentName} />
           </div>
-      ) : (
+      ) : (pageState === 0 || pageState === null || pageState === undefined) ? (
         <div className="joinChatContainer">
             <img src="/Logo.jpg" className="logo-big" />
           <input
@@ -63,6 +63,11 @@ const App = () => {
             onChange={onChange}
           />
           <button onClick={startConversation} />
+        </div>
+      ): (
+        <div className="joinChatContainer">
+            <img src="/Logo.jpg" className="logo-big" />
+            <h2>Loading...</h2>
         </div>
       )}
     </div>
