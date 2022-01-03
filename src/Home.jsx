@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Chat from './Chat';
 import backButton from "./ArrowLeft.svg";
 import axios from "axios";
@@ -9,7 +9,7 @@ const App = () => {
   const [pageState, setPageState] = useState(0);
   const [agentImage, setAgentImage] = useState(null);
 
-  const { agentName } = formInputs;
+  let { agentName } = formInputs;
 
   const sendMessage = async (agentName) => {
     const body = { agent:agentName, command: "/become " + agentName };
@@ -19,6 +19,7 @@ const App = () => {
           data = '/Logo.jpg';
         }
 
+        setFormInputs({ agentName: res.data.agentName })
         setAgentImage(data);
         setPageState(2);
       });
