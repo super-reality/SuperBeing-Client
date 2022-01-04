@@ -13,6 +13,7 @@ const App = () => {
 
   const sendMessage = async (agentName) => {
     const body = { agent:agentName, command: "/become " + agentName };
+    console.log(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`)
     axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
       doCORSRequest(`https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${res.data.keyword}`, (data) => { 
         if (!data || data.length <= 0) {
