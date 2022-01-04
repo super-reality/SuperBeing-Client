@@ -1,6 +1,7 @@
 export function doCORSRequest(url, printResult) {
     var x = new XMLHttpRequest();
-    x.open('GET', (process.env.VITE_SERVER_CORS_URL.endsWith('/') ? process.env.VITE_SERVER_CORS_URL : process.env.VITE_SERVER_CORS_URL + '/') + url);
+    const cors_url = 'https://superreality-backend.herokuapp.com/';
+    x.open('GET', (cors_url.endsWith('/') ? cors_url: cors_url + '/') + url);
     x.onload = x.onerror = function() {
         let res = '';
         const json = JSON.parse(x.responseText).query;
