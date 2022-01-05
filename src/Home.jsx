@@ -17,7 +17,7 @@ const App = () => {
       setFormInputs({ agentName: res.data.agentName })
       setAgentImage('');
       setPageState(2);
-      /*doCORSRequest(`https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${res.data.keyword}`, (data) => { 
+      doCORSRequest(`https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${res.data.keyword}`, (data) => { 
         if (!data || data.length <= 0) {
           data = '/Logo.jpg';
         }
@@ -25,7 +25,7 @@ const App = () => {
         setFormInputs({ agentName: res.data.agentName })
         setAgentImage(data);
         setPageState(2);
-      });*/
+      });
     });
   };
 
@@ -43,7 +43,7 @@ const App = () => {
     <div className="App">
       {pageState === 2 ? (
         <div className="ChatWrapper">
-          <img src='/Logo.jpg' className="logo-small" />
+          <img src={agentImage} className="logo-small" />
           <div className="TalkingTo">Talking to <b>{agentName}</b></div>
 
           <div className="back">
