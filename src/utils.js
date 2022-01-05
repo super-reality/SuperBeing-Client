@@ -4,3 +4,12 @@ export function getRandomStartingMessage() {
     const index = Math.floor(Math.random() * data.length);
     return data[index];
 }
+
+export function isJson(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
