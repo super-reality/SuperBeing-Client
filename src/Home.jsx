@@ -14,9 +14,6 @@ const App = () => {
   const sendMessage = async (agentName) => {
     const body = { agent:agentName, command: "/become " + agentName };
     axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
-      setFormInputs({ agentName: res.data.agentName })
-      setAgentImage('');
-      setPageState(2);
       doCORSRequest(`https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${res.data.keyword}`, (data) => { 
         if (!data || data.length <= 0) {
           data = '/Logo.jpg';
