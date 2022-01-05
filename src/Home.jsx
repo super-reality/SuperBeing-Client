@@ -22,6 +22,7 @@ const App = () => {
           data = '/Logo.jpg';
         }
 
+        console.log('data: ' + data);
         setFormInputs({ agentName: res.data.agentName })
         setAgentImage(data);
         setPageState(2);
