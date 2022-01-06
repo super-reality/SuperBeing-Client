@@ -17,6 +17,7 @@
     "react": "^17.0.2",
     "react-chat-widget": "3.0.5",
     "react-dom": "^17.0.2",
+    "react-player": "^2.9.0",
     "react-router-dom": "^6.2.1",
     "react-scroll-to-bottom": "^4.1.2",
     "react-simple-chat": "^1.1.4",
