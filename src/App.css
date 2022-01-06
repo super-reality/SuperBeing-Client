@@ -54,13 +54,37 @@ body {
 }
 
 .logo-small {
+  position: absolute;
+  top: 0px;
+  right: 0px;
   margin-left:auto;
   margin-right:auto;
   display:block;
-  width:25%;
-  height:40%;
+  width: 50px;
+  height:50px;
+  border-radius: 100%;
+  box-shadow: 0 0 0 4px lightgray;
+}
+
+.image-chat-agent {
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  width: 97px;
+  height:97px;
   top: 5em;
-  z-index:10000;
+  border-radius: 100%;
+  box-shadow: 0 0 0 3px red;
+}
+
+.image-chat-user {
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  width: 100px;
+  height:100px;
+  top: 5em;
+  border-radius: 100%;
 }
 
 .ai-img { 
@@ -132,16 +156,21 @@ body {
 }
 
 .TalkingTo {
+  top: 0;
+  position: absolute;
   width: 100%;
   text-align:center;
 }
 
 .chat-window {
+  position: absolute;
+  top: 40px;
+  right: 32%;
   width: 100%;
   max-width: 600px;
   height: 60%;
-  margin-left: auto;
-  margin-right: auto;
+  border-radius: 20%;
+  box-shadow: -5px 10px lightgray;
 }
 
 .chat-window p {
@@ -256,7 +285,7 @@ min-width:100%;
   border-radius: 2em;
   padding: 1em;
   font-size: 16px;
-  text-align: center;
+  text-align: left;
   display: inline-block;
   box-sizing: border-box;
   vertical-align: middle;

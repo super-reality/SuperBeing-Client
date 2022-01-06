@@ -48,7 +48,7 @@ const App = () => {
       <img src='SuperReality_Background.svg' alt='background' />
       {pageState === 2 ? (
         <div className="ChatWrapper">
-          <img src={agentImage} className="logo-small" />
+          <img src='/Logo.jpg' className="logo-small" />
           <div className="TalkingTo">Talking to <b>{agentName}</b></div>
 
           <div className="back">

@@ -64,11 +64,11 @@ const Chat = ({ agentImage, agentName }) => {
                 key={idx}
               >
                 <div>
-                    <div className="message-image">
-                        {/* {agentImage} */}
-                    </div>
                   <div className="message-content">
-                    <p>{messageContent.message}</p>
+                    <p>
+                      <img src={messageContent.isAgent ? agentImage : 'User_Icon.svg'} className={messageContent.isAgent ? "image-chat-agent" : "image-chat-user"} />
+                      {messageContent.message}
+                    </p>
                   </div>
                 </div>
               </div>
