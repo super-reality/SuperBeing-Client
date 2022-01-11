@@ -180,6 +180,8 @@ body {
 
 .chat-window p {
   margin: 0;
+  width: 100%;
+  text-align: right;
 }
 
 .chat-window .chat-body {
