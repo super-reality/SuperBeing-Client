@@ -75,9 +75,12 @@ body {
   top: 5em;
   border-radius: 100%;
   box-shadow: 0 0 0 3px red;
+    float:left;
+  margin:1em;
 }
 
 .image-chat-user {
+  text-align: right;
   margin-left:auto;
   margin-right:auto;
   display:block;
@@ -85,6 +88,8 @@ body {
   height:100px;
   top: 5em;
   border-radius: 100%;
+    float:right;
+  margin:1em;
 }
 
 .ai-img { 
