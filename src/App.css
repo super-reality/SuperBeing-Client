@@ -66,31 +66,11 @@ body {
   box-shadow: 0 0 0 4px lightgray;
 }
 
-.image-chat-agent {
-  margin-left:auto;
-  margin-right:auto;
-  display:block;
-  width: 97px;
-  height:97px;
-  top: 5em;
-  border-radius: 100%;
-  box-shadow: 0 0 0 3px red;
-}
-
-.image-chat-user {
-  margin-left:auto;
-  margin-right:auto;
-  display:block;
-  width: 100px;
-  height:100px;
-  top: 5em;
-  border-radius: 100%;
-}
-
 .ai-img { 
   border-radius: 18%;
   width: 140px;
   height: 160px;
+  object-fit: cover;
 }
 
 .ai-img:hover {
@@ -199,21 +179,64 @@ body {
   display: flex;
 }
 
-.chat-window .chat-body .message .message-content {
+.image-chat-agent {
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  width: 97px;
+  height:97px;
+  top: 5em;
+  border-radius: 100%;
+  box-shadow: 0 0 0 3px red;
+  offset-anchor: right;
+}
+
+.image-chat-user-user {
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  width: 100px;
+  height:100px;
+  top: 5em;
+  border-radius: 100%;
+  object-fit: cover;
+  offset-anchor: left;
+}
+
+.chat-window .chat-body .message .message-content-agent {
   width: auto;
   height: auto;
   min-height: 3em;
-  max-width: 95%;
+  max-width: 100%;
   border-radius: 5px;
   color: #777777;
   display: flex;
-  align-items: center;
+  align-items: right;
   margin-right: 5px;
   margin-left: 5px;
   padding-right: 5px;
   padding-left: 5px;
   overflow-wrap: break-word;
   word-break: break-word;
+  offset-anchor: right;
+}
+
+.chat-window .chat-body .message .message-content-user {
+  width: auto;
+  height: auto;
+  min-height: 3em;
+  max-width: 100%;
+  border-radius: 5px;
+  color: #777777;
+  display: flex;
+  align-items: left;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  offset-anchor: left;
 }
 
 .chat-window .chat-body .message > div {
@@ -223,30 +246,30 @@ min-width:100%;
 
 
 #you {
-  justify-content: flex-start;
-}
-
-#you .message-content {
-  justify-content: flex-start;
-}
-
-#you .message-meta {
-  justify-content: flex-start;
-  margin-left: 5px;
-}
-
-#other {
   justify-content: flex-end;
   width:100%;
 }
 
-#other .message-content {
+#you .message-content {
   justify-content: flex-end;
 }
 
-#other .message-meta {
+#you .message-meta {
   justify-content: flex-end;
   margin-right: 5px;
+}
+
+#other {
+  justify-content: flex-start;
+}
+
+#other .message-content {
+  justify-content: flex-start;
+}
+
+#other .message-meta {
+  justify-content: flex-start;
+  margin-left: 5px;
 }
 
 .message-meta #author {
