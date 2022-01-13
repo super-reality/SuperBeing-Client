@@ -6,7 +6,9 @@ import backButton from "./ArrowLeft.svg";
 import {
   Wave
 } from 'better-react-spinkit'
-const senderName = "Guest";
+import { v4 as uuidv4 } from 'uuid';
+
+const senderName = "Guest_" + uuidv4();
 
 const Chat = ({ agentImage, agentName, handleClick }) => {  
   const [currentMessage, setCurrentMessage] = useState('');
