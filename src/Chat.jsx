@@ -47,7 +47,7 @@ const Chat = ({ agentImage, agentName }) => {
   };
 
   if (firstLoad === false) {
-    sendMessageWithContent(getRandomStartingMessage());
+    sendMessageWithContent(getRandomStartingMessage(agentName, senderName));
     setFirstLoad(true);
   }
 
@@ -64,12 +64,22 @@ const Chat = ({ agentImage, agentName }) => {
                 key={idx}
               >
                 <div>
-                  <div className="message-content">
                     <p>
-                      <img src={messageContent.isAgent ? agentImage : 'User_Icon.svg'} className={messageContent.isAgent ? "image-chat-agent" : "image-chat-user"} />
-                      {messageContent.message}
+                    {messageContent.isAgent ? ( 
+                      <div className="message-content-agent">
+                        <img src={agentImage} className="image-chat-agent" />
+                        &nbsp;&nbsp;
+                        {messageContent.message}
+                      </div>
+                    ) : (
+                      <div className="message-content-user">     
+                        {messageContent.message}
+                        &nbsp;&nbsp;               
+                        <img src='User_Icon.svg' className="image-chat-user" />  
+                      </div>
+                    )}
+                    
                     </p>
-                  </div>
                 </div>
               </div>
             );
