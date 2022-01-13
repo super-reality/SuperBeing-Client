@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import Chat from './Chat';
-import backButton from "./ArrowLeft.svg";
 import axios from "axios";
-import doCORSRequest from "./ImageRequester";
+import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
+import Chat from './Chat';
+import doCORSRequest from "./ImageRequester";
 
 const App = () => {
   const [formInputs, setFormInputs] = useState({ agentName: '' });
@@ -17,13 +16,12 @@ const App = () => {
     axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
       doCORSRequest(`https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${res.data.keyword}`, (data) => { 
         if (!data || data.length <= 0) {
-          data = '/Logo.jpg';
+          data = '/Logo.png';
         }
 
         console.log('data: ' + data);
         setFormInputs({ agentName: res.data.agentName })
         setAgentImage(data);
-        setPageState(2);
       });
     });
   };
@@ -33,8 +31,8 @@ const App = () => {
 
   const startConversation = () => {
     if (agentName) {
+      setPageState(2);
       sendMessage(agentName);
-      setPageState(1);
     }
   };
 
@@ -45,25 +43,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <img src='SuperReality_Background.svg' alt='background' />
-      {pageState === 2 ? (
+      <img src='SuperReality_Background.svg' width="100%" alt='background' />
+      {pageState > 0 && (
         <div className="ChatWrapper">
-          <img src='/Logo.jpg' className="logo-small" />
-          <div className="TalkingTo">Talking to <b>{agentName}</b></div>
-
-          <div className="back">
-            <img src={backButton} onClick={() => setPageState(0)} />
+          <Chat agentImage={agentImage} handleClick={() => setPageState(0)} agentName={agentName} />
           </div>
-          <Chat agentImage={agentImage} agentName={agentName} />
-          </div>
-      ) : (pageState === 0 || pageState === null || pageState === undefined) ? (
+      )}
         <div className="joinChatContainer">
-            <img src="/Logo.jpg" className="logo-big" />
-            <img
-          alt="Ellipse3745209"
-          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMjQxJyBoZWlnaHQ9Jzk0JyB2aWV3Qm94PScwIDAgMjQxIDk0JyBmaWxsPSdub25lJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPgo8ZyBmaWx0ZXI9J3VybCgjZmlsdGVyMF9mXzUyMF85KSc+CjxlbGxpcHNlIGN4PScxMjAuNScgY3k9JzQ3JyByeD0nOTAuNScgcnk9JzE3JyBmaWxsPScjMDc5QkVEJyBmaWxsLW9wYWNpdHk9JzAuMycvPgo8L2c+CjxkZWZzPgo8ZmlsdGVyIGlkPSdmaWx0ZXIwX2ZfNTIwXzknIHg9JzAnIHk9JzAnIHdpZHRoPScyNDEnIGhlaWdodD0nOTQnIGZpbHRlclVuaXRzPSd1c2VyU3BhY2VPblVzZScgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSdzUkdCJz4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0nMCcgcmVzdWx0PSdCYWNrZ3JvdW5kSW1hZ2VGaXgnLz4KPGZlQmxlbmQgbW9kZT0nbm9ybWFsJyBpbj0nU291cmNlR3JhcGhpYycgaW4yPSdCYWNrZ3JvdW5kSW1hZ2VGaXgnIHJlc3VsdD0nc2hhcGUnLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0nMTUnIHJlc3VsdD0nZWZmZWN0MV9mb3JlZ3JvdW5kQmx1cl81MjBfOScvPgo8L2ZpbHRlcj4KPC9kZWZzPgo8L3N2Zz4K"
-          className='svg1'
-        />
+            <img src="/Logo.png" className="logo-big" />
           <input
             type="text"
             placeholder="Who or what do you want to talk to?"
@@ -80,6 +67,7 @@ const App = () => {
           <br/><br/>
           <center>
           <table>
+            <tbody>
             <tr>
               <td><img src='tree.png' alt='ai' className='ai-img' onClick={() => { startConversationFromImage('tree') }} /></td>
               <td><img src='sunflower.png' alt='ai' className='ai-img' onClick={() => { startConversationFromImage('sunflower') }} /></td>
@@ -102,19 +90,14 @@ const App = () => {
               <td><img src='caffeine.png' alt='ai' className='ai-img' onClick={() => { startConversationFromImage('caffeine') }} /></td>
               <td><img src='cell.png' alt='ai' className='ai-img' onClick={() => { startConversationFromImage('cell (biology)') }} /></td>
               <td><img src='sun.png' alt='ai' className='ai-img' onClick={() => { startConversationFromImage('sun') }} /></td>
-              <td><img src='sr.png' alt='ai' className='ai-img' onClick={() => { }} /></td>
+              <td><img src='shakespeare.png' alt='ai' className='ai-img' onClick={() => { startConversationFromImage('shakespeare') }} /></td>
             </tr>
+            </tbody>
           </table>
           <br/><br/><br/><br/>
           <ReactPlayer url='https://www.youtube.com/watch?v=Ar54k0sMWe0' />
           </center>
         </div>
-      ): (
-        <div className="joinChatContainer">
-            <img src="/Logo.jpg" className="logo-big" />
-            <h2>Loading...</h2>
-        </div>
-      )}
     </div>
   );
 };

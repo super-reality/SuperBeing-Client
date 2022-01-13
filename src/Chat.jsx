@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import axios from "axios";
 import { getRandomStartingMessage } from './utils';
+import backButton from "./ArrowLeft.svg";
 
 const senderName = "Guest";
 
-const Chat = ({ agentImage, agentName }) => {  
+const Chat = ({ agentImage, agentName, handleClick }) => {  
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
   const [firstLoad, setFirstLoad] = useState(false);
@@ -53,6 +54,11 @@ const Chat = ({ agentImage, agentName }) => {
 
   return (
     <div className="chat-window">
+                <div className="back">
+            <img src={backButton} onClick={() => handleClick()} />
+          </div>
+    <div className="TalkingTo">Talking to <b>{agentName}</b></div>
+
       <div className="chat-body">
       { firstMessage ? (
         <ScrollToBottom className="message-container">
@@ -64,7 +70,6 @@ const Chat = ({ agentImage, agentName }) => {
                 key={idx}
               >
                 <div>
-                    <p>
                     {messageContent.isAgent ? ( 
                       <div className="message-content-agent">
                         <img src={agentImage} className="image-chat-agent" />
@@ -78,9 +83,7 @@ const Chat = ({ agentImage, agentName }) => {
                         <img src='User_Icon.svg' className="image-chat-user" />  
                       </div>
                     )}
-                    
-                    </p>
-                </div>
+                                    </div>
               </div>
             );
           })}
