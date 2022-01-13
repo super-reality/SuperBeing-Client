@@ -156,6 +156,15 @@ body {
 left: 8%;
 }
 
+.loadingSpinner div{
+  width:100px;
+  height:100px;
+  margin-top:1em;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
 .chat-window p {
   margin: 0;
   width: 100%;

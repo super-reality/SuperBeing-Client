@@ -3,7 +3,9 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import axios from "axios";
 import { getRandomStartingMessage } from './utils';
 import backButton from "./ArrowLeft.svg";
-
+import {
+  Wave
+} from 'better-react-spinkit'
 const senderName = "Guest";
 
 const Chat = ({ agentImage, agentName, handleClick }) => {  
@@ -60,7 +62,7 @@ const Chat = ({ agentImage, agentName, handleClick }) => {
                 <div className="back">
             <img src={backButton} onClick={() => handleClick()} />
           </div>
-    <div className="TalkingTo">Talking to <b>{agentName}</b></div>
+    {agentName && <div className="TalkingTo">Talking to <b>{agentName}</b></div>}
 
       <div className="chat-body">
       { firstMessage ? (
@@ -92,7 +94,10 @@ const Chat = ({ agentImage, agentName, handleClick }) => {
           })}
         </ScrollToBottom>
         ) : (
-          <h1>Loading...</h1>
+          <>
+          <Wave className="loadingSpinner" size={100} style={{marginLeft:"auto", marginRight:"auto"}} />
+        <span style={{width:100, textAlign:"center"}}>Loading...</span>
+        </>
         )}
       </div>
       { firstMessage ? (
