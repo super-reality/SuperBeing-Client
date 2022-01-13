@@ -13,6 +13,9 @@ const Chat = ({ agentImage, agentName, handleClick }) => {
   const [firstMessage, setFirstMessage] = useState(false);
 
   const sendMessage = async () => {
+    if(!agentName){
+      console.log("Not sending message, not yet connected")
+    }
       console.log("agentImage", agentImage)
     if (currentMessage) {
         const messageData = {
@@ -47,8 +50,8 @@ const Chat = ({ agentImage, agentName, handleClick }) => {
     }); 
   };
 
-  if (firstLoad === false) {
-    //sendMessageWithContent(getRandomStartingMessage(agentName, senderName));
+  if (firstLoad === false && agentName) {
+    sendMessageWithContent(getRandomStartingMessage(agentName, senderName));
     setFirstLoad(true);
   }
 

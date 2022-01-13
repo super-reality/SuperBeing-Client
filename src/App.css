@@ -135,7 +135,7 @@ body {
 }
 
 .TalkingTo {
-  top: 0;
+  top: 1.5em;
   position: absolute;
   width: 100%;
   text-align:center;
@@ -180,19 +180,15 @@ left: 8%;
 .chat-window .chat-body .message {
   height: auto;
   padding-bottom: 10px;
-  display: flex;
 }
 
 .image-chat-agent {
-  margin-left:auto;
-  margin-right:auto;
-  display:block;
-  width: 97px;
-  height:97px;
-  top: 5em;
+  margin-right: 1em;
+  float: left;
+  width: 4em;
+  height:4em;
   border-radius: 100%;
-  box-shadow: 0 0 0 3px red;
-  offset-anchor: right;
+  border: 2px solid red;
 }
 
 .image-chat-user-user {
@@ -210,29 +206,25 @@ left: 8%;
 .chat-window .chat-body .message .message-content-agent {
   width: auto;
   height: auto;
-  min-height: 3em;
+  min-height: 6em;
   max-width: 100%;
   border-radius: 5px;
   color: #777777;
-  display: flex;
   align-items: right;
-  margin-right: 5px;
-  margin-left: 5px;
-  padding-right: 5px;
-  padding-left: 5px;
+  padding: 1em;
   overflow-wrap: break-word;
   word-break: break-word;
   offset-anchor: right;
+  vertical-align: middle;
+
 }
 
 .chat-window .chat-body .message .message-content-user {
-  width: auto;
-  height: auto;
-  min-height: 3em;
+  min-height: 6em;
+
   max-width: 100%;
   border-radius: 5px;
   color: #777777;
-  display: flex;
   align-items: left;
   margin-right: 5px;
   margin-left: 5px;
@@ -241,6 +233,7 @@ left: 8%;
   overflow-wrap: break-word;
   word-break: break-word;
   offset-anchor: left;
+  text-align: right;
 }
 
 .chat-window .chat-body .message > div {

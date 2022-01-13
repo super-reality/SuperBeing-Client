@@ -29,10 +29,12 @@ const App = () => {
   const onChange = (e) =>
     setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
 
-  const startConversation = () => {
+  const startConversation = async () => {
     if (agentName) {
+      setPageState(1);
+      await sendMessage(agentName);
       setPageState(2);
-      sendMessage(agentName);
+
     }
   };
 
@@ -49,6 +51,7 @@ const App = () => {
           <Chat agentImage={agentImage} handleClick={() => setPageState(0)} agentName={agentName} />
           </div>
       )}
+      {pageState === 0 && (
         <div className="joinChatContainer">
             <img src="/Logo.png" className="logo-big" />
           <input
@@ -98,6 +101,7 @@ const App = () => {
           <ReactPlayer url='https://www.youtube.com/watch?v=Ar54k0sMWe0' />
           </center>
         </div>
+      )}
     </div>
   );
 };
