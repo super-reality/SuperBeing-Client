@@ -48,7 +48,7 @@ const Chat = ({ agentImage, agentName, handleClick }) => {
   };
 
   if (firstLoad === false) {
-    sendMessageWithContent(getRandomStartingMessage(agentName, senderName));
+    //sendMessageWithContent(getRandomStartingMessage(agentName, senderName));
     setFirstLoad(true);
   }
 
