@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import ScrollToBottom from 'react-scroll-to-bottom';
 import axios from "axios";
-import { getRandomStartingMessage } from './utils';
-import backButton from "./ArrowLeft.svg";
 import {
   Wave
-} from 'better-react-spinkit'
+} from 'better-react-spinkit';
+import React, { useState } from 'react';
+import ScrollToBottom from 'react-scroll-to-bottom';
 import { v4 as uuidv4 } from 'uuid';
+import backButton from "./ArrowLeft.svg";
+import { getRandomStartingMessage } from './utils';
 
 const senderName = "Guest_" + uuidv4();
 

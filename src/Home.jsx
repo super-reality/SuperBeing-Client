@@ -9,37 +9,40 @@ const App = () => {
   const [pageState, setPageState] = useState(0);
   const [agentImage, setAgentImage] = useState(null);
 
-  let { agentName } = formInputs;
-
   const sendMessage = async (agentName) => {
     const body = { agent:agentName, command: "/become " + agentName };
-    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
-      doCORSRequest(`https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${res.data.keyword}`, (data) => { 
-        if (!data || data.length <= 0) {
-          data = '/Logo.png';
+    const res = await axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body);
+      console.log("response body is", body)
+      const imageRes = await axios.post(process.env.VITE_SERVER_CORS_URL +`https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${res.data.keyword}`);
+      let imageParsedRes;
+    console.log("imageRes is", imageRes)
+      const pages = imageRes.data.query?.pages;
+        if (pages && pages.length > 0) {
+            imageParsedRes = pages[0].original?.source;
         }
 
-        console.log('data: ' + data);
+        if (!imageParsedRes || imageParsedRes.length <= 0) {
+          imageParsedRes = '/Logo.png';
+        }
+
         setFormInputs({ agentName: res.data.agentName })
-        setAgentImage(data);
-      });
-    });
+        setAgentImage(imageParsedRes);
   };
 
   const onChange = (e) =>
     setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
 
   const startConversation = async () => {
-    if (agentName) {
+    if (formInputs.agentName !== null && formInputs.agentName !== "") {
       setPageState(1);
-      await sendMessage(agentName);
+      await sendMessage(formInputs.agentName);
       setPageState(2);
 
     }
   };
 
   const startConversationFromImage = (ai_name) => {
-    agentName = ai_name;
+    setFormInputs({agentName: ai_name});
     startConversation();
   }
 
@@ -48,7 +51,7 @@ const App = () => {
       <img src='SuperReality_Background.svg' width="100%" alt='background' />
       {pageState > 0 && (
         <div className="ChatWrapper">
-          <Chat agentImage={agentImage} handleClick={() => setPageState(0)} agentName={agentName} />
+          <Chat agentImage={agentImage} handleClick={() => setPageState(0)} agentName={formInputs.agentName} />
           </div>
       )}
       {pageState === 0 && (
@@ -58,7 +61,7 @@ const App = () => {
             type="text"
             placeholder="Who or what do you want to talk to?"
             name="agentName"
-            value={agentName}
+            value={formInputs.agentName}
             onKeyPress={(event) => {
               event.key === 'Enter' && startConversation();
             }}
