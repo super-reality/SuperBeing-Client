@@ -7,12 +7,10 @@ const AgentEditor = ({ data, handleClick }) => {
 
     const update = async() => {
         if (!dataUpdated) {
-            console.log('data is the same');
             return;
         }
 
         const body = { agentName:data.agentName, data: data };
-        console.log('updating agent: ' + body.agentName);
         axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/update_agent`, body).then(res => {
             if (res.data === 'ok') {
                 handleClick();

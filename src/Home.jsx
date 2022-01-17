@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Link } from "react-router-dom";
 import Chat from './Chat';
-import doCORSRequest from "./ImageRequester";
 
 const App = () => {
   const [formInputs, setFormInputs] = useState({ agentName: '' });
@@ -50,7 +49,6 @@ const App = () => {
 
   return (
     <div className="App">
-      <button><Link to="/editor" className="btn btn-primary">go to editor</Link></button>
       <img src='SuperReality_Background.svg' width="100%" alt='background' />
       {pageState > 0 && (
         <div className="ChatWrapper">
@@ -106,6 +104,10 @@ const App = () => {
           <br/><br/><br/><br/>
           <ReactPlayer url='https://www.youtube.com/watch?v=Ar54k0sMWe0' />
           </center>
+          <div className='App'>
+          <button><Link to="/editor" className="btn btn-primary">go to agent editor</Link></button>
+          <button><Link to="/config" className="btn btn-primary">go to config editor</Link></button>
+          </div>
         </div>
       )}
     </div>
