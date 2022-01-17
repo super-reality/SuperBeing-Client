@@ -1,17 +1,18 @@
 import axios from "axios";
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AgentEditor from "./AgentEditor";
 
 const ConfigEditor = () => {
   const [firstLoad, setFirstLoad] = useState(true);
   const [config, setConfig] = useState(null);
   const [dataUpdated, setDataUpdated] = useState(false);
+  const navigate = useNavigate();
 
   if (firstLoad) {
     axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/get_config`).then(res => {
         setConfig(res.data.config);
-        setFirstLoad(false);
+        setFirstLoad(false);  
     });
   }
 
@@ -24,7 +25,7 @@ const ConfigEditor = () => {
     const body = { config: config };
     axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/update_config`, body).then(res => {
         if (res.data === 'ok') {
-          window.location.reload(false);
+          navigate('/');
         } else {
             console.log(res.data);
         }
