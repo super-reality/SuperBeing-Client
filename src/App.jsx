@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Terminal from "./Terminal";
 import Home from "./Home";
+import AIEditor from "./AIEditor";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="terminal" element={<Terminal />} />
+        <Route path="/editor" element={<AIEditor />} />
       </Routes>
     </Router>
   );

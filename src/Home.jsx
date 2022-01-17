@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
+import { Link } from "react-router-dom";
 import Chat from './Chat';
 import doCORSRequest from "./ImageRequester";
 
@@ -19,7 +20,6 @@ const App = () => {
           data = '/Logo.png';
         }
 
-        console.log('data: ' + data);
         setFormInputs({ agentName: res.data.agentName })
         setAgentImage(data);
       });
@@ -43,8 +43,10 @@ const App = () => {
     startConversation();
   }
 
+
   return (
     <div className="App">
+      <button><Link to="/editor" className="btn btn-primary">go to editor</Link></button>
       <img src='SuperReality_Background.svg' width="100%" alt='background' />
       {pageState > 0 && (
         <div className="ChatWrapper">
