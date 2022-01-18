@@ -9,13 +9,14 @@ const App = () => {
   const [formInputs, setFormInputs] = useState({ agentName: '' });
   const [pageState, setPageState] = useState(0);
   const [agentImage, setAgentImage] = useState(null);
+  const [startingMessage, setStartingMessage] = useState('');
 
   const sendMessage = async (agentName) => {
     const body = { agent:agentName, command: "/become " + agentName };
-    console.log(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`);
     const res = await axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body);
+    setStartingMessage(res.data.startingMessage);
     var x = new XMLHttpRequest();
-    x.open('GET', (process.env.VITE_SERVER_CORS_URL.endsWith('/') ? process.env.VITE_SERVER_CORS_URL : process.env.VITE_SERVER_CORS_URL + '/') + `https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${body.agent}`);
+    x.open('GET', (process.env.VITE_SERVER_CORS_URL.endsWith('/') ? process.env.VITE_SERVER_CORS_URL : process.env.VITE_SERVER_CORS_URL + '/') + `https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${(res.data.result.title ? res.data.result.title : body.agent)}`);
     x.onload = x.onerror = function() {
         let res = '';
             if (x && x.responseText && x.responseText.length > 0 && isJson(x.responseText)) {
@@ -67,7 +68,7 @@ const App = () => {
       <img src='SuperReality_Background.svg' width="100%" alt='background' />
       {pageState > 0 && (
         <div className="ChatWrapper">
-          <Chat agentImage={agentImage} handleClick={() => setPageState(0)} agentName={formInputs.agentName} />
+          <Chat agentImage={agentImage} handleClick={() => setPageState(0)} agentName={formInputs.agentName} startingMessage={startingMessage} />
           </div>
       )}
       {pageState === 0 && (

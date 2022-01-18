@@ -6,11 +6,10 @@ import React, { useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import { v4 as uuidv4 } from 'uuid';
 import backButton from "./ArrowLeft.svg";
-import { getRandomStartingMessage } from './utils';
 
 const senderName = "Guest_" + uuidv4();
 
-const Chat = ({ agentImage, agentName, handleClick }) => {  
+const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {  
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
   const [firstLoad, setFirstLoad] = useState(false);
@@ -41,22 +40,16 @@ const Chat = ({ agentImage, agentName, handleClick }) => {
       setCurrentMessage('');
     }
   };
-  const sendMessageWithContent = async (msg) => {
-    const body = { sender:senderName, agent:agentName, command: msg };
-    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
-      console.log("response is", res);
-      const messageData = {
-        message: res.data.result,
-        isAgent: true
-      };
-      setMessageList((list) => [...list, messageData]);
-      setFirstMessage(true);
-    }); 
-  };
 
   if (firstLoad === false && agentName) {
-    sendMessageWithContent(getRandomStartingMessage(agentName, senderName));
+    const messageData = {
+      message: startingMessage,
+      isAgent: true
+    };
+    console.log('starting: ' + startingMessage);
+    setMessageList((list) => [...list, messageData]);
     setFirstLoad(true);
+    setFirstMessage(true);
   }
 
   return (
