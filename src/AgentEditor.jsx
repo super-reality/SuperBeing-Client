@@ -55,6 +55,12 @@ const AgentEditor = ({ data, handleClick }) => {
                 <label>Room: 
                     <textarea onChange={(e) => { setDataUpdated(true);  data.room = e.target.value}} defaultValue={data.room}></textarea> 
                 </label><br/><br/>
+                <label>Starting Phrases: 
+                    <textarea onChange={(e) => { setDataUpdated(true);  data.startingPhrases = e.target.value}} defaultValue={data.startingPhrases}></textarea> 
+                </label><br/><br/>
+                <label>Ignored Keywords: 
+                    <textarea onChange={(e) => { setDataUpdated(true);  data.ignoredKeywords = e.target.value}} defaultValue={data.ignoredKeywords}></textarea> 
+                </label><br/><br/>
                 <input type='button' value='Update' onClick={update} />
             </form>
         </center>
