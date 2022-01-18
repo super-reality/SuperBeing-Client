@@ -46,9 +46,7 @@ const App = () => {
     setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
 
   const startConversation = async () => {
-    console.log(formInputs);
     if (formInputs.agentName !== null && formInputs.agentName !== "") {
-      console.log('send message: ' + formInputs.agentName);
       setPageState(1);
       await sendMessage(formInputs.agentName);
       setPageState(2);

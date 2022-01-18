@@ -19,7 +19,7 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
     if(!agentName){
       console.log("Not sending message, not yet connected")
     }
-      console.log("agentImage", agentImage)
+    
     if (currentMessage) {
         const messageData = {
             message: currentMessage,
@@ -46,7 +46,6 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
       message: startingMessage,
       isAgent: true
     };
-    console.log('starting: ' + startingMessage);
     setMessageList((list) => [...list, messageData]);
     setFirstLoad(true);
     setFirstMessage(true);
