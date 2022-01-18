@@ -14,26 +14,17 @@ const App = () => {
     const body = { agent:agentName, command: "/become " + agentName };
     console.log(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`);
     const res = await axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body);
-    console.log("response body is", body)
-    console.log('1234');
     var x = new XMLHttpRequest();
     x.open('GET', (process.env.VITE_SERVER_CORS_URL.endsWith('/') ? process.env.VITE_SERVER_CORS_URL : process.env.VITE_SERVER_CORS_URL + '/') + `https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${body.agent}`);
     x.onload = x.onerror = function() {
-        console.log('cors resp: ' + x.responseText);
         let res = '';
             if (x && x.responseText && x.responseText.length > 0 && isJson(x.responseText)) {
-              console.log('1');
             const json = JSON.parse(x.responseText).query;
-              console.log('2');
             if (json) {
-              console.log('3');
                 const pages = json.pages;
                 if (pages && pages.length > 0) {
-                  console.log('4');
                     const original = pages[0].original;
-                    console.log(pages[0]);
                     if (original) {
-                        console.log('5');
                         res = original.source;
                     }
                 }
