@@ -62,6 +62,11 @@ const AgentEditor = ({ data, handleClick }) => {
                     <textarea onChange={(e) => { setDataUpdated(true);  data.ignoredKeywords = e.target.value}} defaultValue={data.ignoredKeywords}></textarea> 
                 </label><br/><br/>
                 <input type='button' value='Update' onClick={update} />
+                <input type='button' value='Delete' onClick={() => {
+                    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/delete_agent`, { agentName:data.agentName }).then(res => {
+                        handleClick();
+                    });
+                 }} />
             </form>
         </center>
       </div>

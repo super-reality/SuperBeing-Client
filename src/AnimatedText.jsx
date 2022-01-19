@@ -1,4 +1,4 @@
-import { Random, Wave } from 'react-animated-text';
+import { Wave } from 'react-animated-text';
 import React from 'react';
 
 export const AnimatedText = ({input, effect, effectChange}) => (

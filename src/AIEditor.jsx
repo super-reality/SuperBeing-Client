@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import AgentEditor from "./AgentEditor";
+import NewAgentEditor from "./NewAgentEditor";
 
 const AIEditor = () => {
   const [currentEditor, setCurrentEditor] = useState(0);
@@ -26,7 +27,7 @@ const AIEditor = () => {
       <button><Link to="/" className="btn btn-primary">back</Link></button>
         { firstLoad ? (
           <h1>Loading...</h1>
-        ) : (
+        ) :  (
           <div>
           <h1>Agents:</h1> 
             {agents.map((agent, idx) => {
@@ -44,11 +45,17 @@ const AIEditor = () => {
                 </div>
               );
             })}
+            <br/><br/>
+            <button onClick={() => {
+              setCurrentEditor(2);
+            }}>Add new agent</button>
           </div>
           )}
       </div>
+      ) : currentEditor === 1 ? (
+        <AgentEditor data={currentAgentData} handleClick={() => {setCurrentEditor(0); setCurrentAgentData(null); window.location.reload(false)} } />
       ) : (
-        <AgentEditor data={currentAgentData} handleClick={() => {setCurrentEditor(0); setCurrentAgentData(null);} } />
+        <NewAgentEditor handleClick={() => {setCurrentEditor(0); setCurrentAgentData(null); window.location.reload(false)} } />
       )}
     </div>
   );
