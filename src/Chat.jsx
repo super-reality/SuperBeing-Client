@@ -5,6 +5,7 @@ import {
 import React, { useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import { v4 as uuidv4 } from 'uuid';
+import AnimatedText from "./AnimatedText";
 import backButton from "./ArrowLeft.svg";
 
 const senderName = "Guest_" + uuidv4();
@@ -14,11 +15,13 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
   const [messageList, setMessageList] = useState([]);
   const [firstLoad, setFirstLoad] = useState(false);
   const [firstMessage, setFirstMessage] = useState(false);
+  const [typing, setTyping] = useState(false);
 
   const sendMessage = async () => {
     if(!agentName){
       console.log("Not sending message, not yet connected")
     }
+    setTyping(true);
     
     if (currentMessage) {
         const messageData = {
@@ -34,6 +37,7 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
         isAgent: true
       };
       setMessageList((list) => [...list, messageData]);
+      setTyping(false);
     });
 
       setMessageList((list) => [...list, messageData]);
@@ -90,12 +94,20 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
         ) : (
           <>
           <Wave className="loadingSpinner" size={100} style={{marginLeft:"auto", marginRight:"auto"}} />
-        <span style={{width:100, textAlign:"center"}}>Loading...</span>
         </>
         )}
       </div>
       { firstMessage ? (
       <div className="chat-footer">
+        <br/>
+        <center>
+        { typing ? (
+          <AnimatedText input='Typing...' effect='stretch' effectChange={4} />
+        ) : ( 
+          <div></div>
+        )}
+        </center>
+        <br/>
         <input
           type="text"
           name="message"

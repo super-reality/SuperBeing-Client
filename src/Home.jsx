@@ -66,7 +66,7 @@ const App = () => {
       <img src='SuperReality_Background.svg' width="100%" alt='background' />
       {pageState > 0 && (
         <div className="ChatWrapper">
-          <Chat agentImage={agentImage} handleClick={() => setPageState(0)} agentName={formInputs.agentName} startingMessage={startingMessage} />
+          <Chat agentImage={agentImage} handleClick={() => { window.location.reload(false); setPageState(0); }} agentName={formInputs.agentName} startingMessage={startingMessage} />
           </div>
       )}
       {pageState === 0 && (
