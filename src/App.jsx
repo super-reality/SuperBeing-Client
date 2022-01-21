@@ -15,7 +15,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="terminal" element={<Terminal />} />
+        <Route path="/terminal" element={<Terminal />} />
         <Route path="/editor" element={<AIEditor />} />
         <Route path="/config" element={<ConfigEditor />} />
       </Routes>
