@@ -56,7 +56,7 @@ function App() {
     });
   };
 
-  const handleCommand = (input) => {
+  const handleCommand = (input, print) => {
     if(senderName == ""){
       setSenderName(input);
       const body = { sender: senderName, command: "GET_AGENT_NAME"  };
@@ -69,6 +69,7 @@ function App() {
       axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
         console.log("response is", res);
         console.log(agentName + " > " + res.data.result);
+        print(agentName + " > " + res.data.result)
       });
   };
 
