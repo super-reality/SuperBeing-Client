@@ -48,7 +48,13 @@ const ConfigEditor = () => {
                             key={idx}
                         >
                             <label>{value.key}: 
+                              { (value.value.length > 0 && (value.value.toLowerCase() === 'true' || value.value.toLowerCase() === 'false')) ? ( 
+                                <input type='checkbox' id={idx} name={idx} defaultChecked={value.value.toLowerCase() === true ? true : false} onChange={(e) => {
+                                  setDataUpdated(true); config[idx] = {key: value.key, value: (e.target.checked.toString()) }
+                                }}/>
+                              ) : (
                                 <textarea onChange={(e) => { setDataUpdated(true); config[idx] = {key: value.key, value: e.target.value }}} defaultValue={value.value}></textarea> 
+                              )}  
                             </label><br/><br/>
                         </div>
                         );
