@@ -15,11 +15,11 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/test" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/terminal" element={<Terminal />} />
         <Route path="/editor" element={<AIEditor />} />
         <Route path="/config" element={<ConfigEditor />} />
-        <Route path="/"/*profanity"*/ element={<ProfanityEditor />} />
+        <Route path="/profanity" element={<ProfanityEditor />} />
       </Routes>
     </Router>
   );
