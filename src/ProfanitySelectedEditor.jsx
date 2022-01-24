@@ -6,6 +6,7 @@ const ProfanitySelectedEditor = ({ editorId }) => {
   const [firstLoad, setFirstLoad] = useState(true);
   const [data, setData] = useState([]);
   const [addNewWord, setAddNewWord] = useState('');
+  const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
 
   if (firstLoad) {
@@ -13,8 +14,16 @@ const ProfanitySelectedEditor = ({ editorId }) => {
         if (res.data === 'invalid editor id') {
             navigate('/test');
         } else {
+            let count = 0;
+            let _data = [];
             for(let i = 0; i < res.data.data.length; i++) {
-                data.push(res.data.data[i]);
+                _data.push(res.data.data[i]);
+                count++;
+                if (count >= 20) {
+                    data.push(_data);
+                    count = 0;
+                    _data = [];
+                }
             }
             setFirstLoad(false);
         }
@@ -54,18 +63,31 @@ const ProfanitySelectedEditor = ({ editorId }) => {
                     <button onClick={() => addWord(addNewWord)}>Add</button>
                 </label>
             <br/><br/>
-                    {data.map((value, idx) => {
+                    Page: {currentPage + 1}:
+                    {data[currentPage].map((value, idx) => {
                         return (
                         <div
                             key={idx}
                         >
-                            <label>{value}:
-                                <button onClick={() => removeWord(value)}>Remove</button>
-                            </label>  
+                        <label>{value}:
+                        <button onClick={() => removeWord(value)}>Remove</button>
+                        </label> 
                             <br/><br/>
                         </div>
                         );
                 })}
+                <button onClick={() => {
+                    setCurrentPage(currentPage - 1);
+                    if (currentPage < 1) {
+                        setCurrentPage(1);
+                    }
+                }}>Previous Page</button> 
+                <button onClick={() => {
+                    setCurrentPage(currentPage + 1)
+                    if (currentPage > data.length - 1) {
+                        setCurrentPage(data.length - 1)
+                    }
+                }}>Next Page</button> 
           </div>
         )}
          
