@@ -33,7 +33,7 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
     axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
       console.log("response is", res);
       const messageData = {
-        message: res.data.result,
+        message: res && res.data && res.data.result || agentName,
         isAgent: true
       };
       setMessageList((list) => [...list, messageData]);

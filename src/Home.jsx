@@ -16,7 +16,7 @@ const App = () => {
     const res = await axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body);
     setStartingMessage(res.data.startingMessage);
     var x = new XMLHttpRequest();
-    x.open('GET', (process.env.VITE_SERVER_CORS_URL.endsWith('/') ? process.env.VITE_SERVER_CORS_URL : process.env.VITE_SERVER_CORS_URL + '/') + `https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${(res.data.result.title ? res.data.result.title : body.agent)}`);
+    x.open('GET', (process.env.VITE_SERVER_CORS_URL.endsWith('/') ? process.env.VITE_SERVER_CORS_URL : process.env.VITE_SERVER_CORS_URL + '/') + `https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${(res?.data?.result?.title ? res.data.result.title : body.agent)}`);
     x.onload = x.onerror = function() {
         let res = '';
             if (x && x.responseText && x.responseText.length > 0 && isJson(x.responseText)) {
