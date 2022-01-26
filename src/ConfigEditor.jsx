@@ -6,6 +6,7 @@ const ConfigEditor = () => {
   const [firstLoad, setFirstLoad] = useState(true);
   const [config, setConfig] = useState(null);
   const [dataUpdated, setDataUpdated] = useState(false);
+  const [newConfig, setNewConfig] = useState({key: '', value: ''});
   const navigate = useNavigate();
 
   if (firstLoad) {
@@ -31,6 +32,34 @@ const ConfigEditor = () => {
     });
   }
 
+  const _delete = async(key) => {
+    const body = { data: { key: key } };
+    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/delete_config`, body).then(res => {
+        if (res.data === 'ok') {
+          navigate('/');
+        } else {
+            console.log(res.data);
+        }
+    });
+  }
+
+  const add = async() => {
+    if (newConfig.key === '' || newConfig.value === '') {
+      return;
+    }
+
+    const body = { data: { key: newConfig.key, value: newConfig.value } };
+    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/add_config`, body).then(res => {
+        if (res.data === 'ok') {
+          navigate('/');
+        } else {
+            console.log(res.data);
+        }
+    });
+    newConfig.key = '';
+    newConfig.value = '';
+  }
+
   return (
     <div className="App">
       <div>
@@ -39,8 +68,24 @@ const ConfigEditor = () => {
           <h1>Loading...</h1>
         ) : (
             <div>
-                <h1>Config:</h1> 
-            <form>
+                <h1>Config:</h1>
+                <label>Add new Config Variable:<br/>
+                    <label>Key:
+                      <input type="text" name="new_config_variable_key" onChange={(e) => {
+                        newConfig.key = e.target.value;
+                      }} defaultValue=''/>
+                    </label>
+                    <br/>
+                    <label>Value: 
+                      <input type="text" name="new_config_variable_value" onChange={(e) => {
+                        newConfig.value = e.target.value;
+                      }} defaultValue=''/>
+                    </label>
+                    <br/>
+                    <button onClick={() => {
+                      add();
+                    }}>Add</button>
+                </label> 
                     {config.map((value, idx) => {
                         return (
                         <div
@@ -48,18 +93,18 @@ const ConfigEditor = () => {
                         >
                             <label>{value.key}: 
                               { (value.value.length > 0 && (value.value.toLowerCase() === 'true' || value.value.toLowerCase() === 'false')) ? ( 
-                                <input type='checkbox' id={idx} name={idx} defaultChecked={value.value.toLowerCase() === true ? true : false} onChange={(e) => {
+                                <input type='checkbox' id={idx} name={idx} defaultChecked={value.value.toLowerCase().trim() == 'true' ? true : false} onChange={(e) => {
                                   setDataUpdated(true); config[idx] = {key: value.key, value: (e.target.checked.toString()) }
                                 }}/>
                               ) : (
                                 <textarea onChange={(e) => { setDataUpdated(true); config[idx] = {key: value.key, value: e.target.value }}} defaultValue={value.value}></textarea> 
                               )}  
+                              <button onClick={() => { _delete(value.key) }}>delete</button>
                             </label><br/><br/>
                         </div>
                         );
                 })}
                 <input type='button' value='Update' onClick={update} />
-                </form>
           </div>
         )}
          

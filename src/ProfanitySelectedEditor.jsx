@@ -35,6 +35,7 @@ const ProfanitySelectedEditor = ({ editorId }) => {
     axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/add_profanity_word`, { word: word, editorId: editorId }).then(res => {
         window.location.reload(false);
     });
+    setAddNewWord('');
   }
   const removeWord = async (word) => {
     if (!word || word.length <= 0) return;
