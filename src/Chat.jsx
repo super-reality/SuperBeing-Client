@@ -99,15 +99,9 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
       </div>
       { firstMessage ? (
       <div className="chat-footer">
-        <br/>
-        <center>
         { typing ? (
           <AnimatedText input='Typing...' effect='stretch' effectChange={4} />
-        ) : ( 
-          <div></div>
-        )}
-        </center>
-        <br/>
+        ) : null}
         <input
           type="text"
           name="message"
@@ -119,9 +113,7 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
           }}
         /><button onClick={sendMessage} />
       </div>
-    ) : (
-      <h1></h1>
-    )}
+    ) : null}
     </div>
   );
 };

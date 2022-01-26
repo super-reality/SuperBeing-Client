@@ -12,37 +12,37 @@ const App = () => {
   const [startingMessage, setStartingMessage] = useState('');
 
   const sendMessage = async (agentName) => {
-    const body = { agent:agentName, command: "/become " + agentName };
+    const body = { agent: agentName, command: "/become " + agentName };
     const res = await axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body);
     setStartingMessage(res.data.startingMessage);
     var x = new XMLHttpRequest();
     x.open('GET', (process.env.VITE_SERVER_CORS_URL.endsWith('/') ? process.env.VITE_SERVER_CORS_URL : process.env.VITE_SERVER_CORS_URL + '/') + `https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${(res.data?.result?.title ? res.data.result.title : body.agent)}`);
-    x.onload = x.onerror = function() {
-        let res = '';
-            if (x && x.responseText && x.responseText.length > 0 && isJson(x.responseText)) {
-            const json = JSON.parse(x.responseText).query;
-            if (json) {
-                const pages = json.pages;
-                if (pages && pages.length > 0) {
-                    const original = pages[0].original;
-                    if (original) {
-                        res = original.source;
-                    }
-                }
+    x.onload = x.onerror = function () {
+      let res = '';
+      if (x && x.responseText && x.responseText.length > 0 && isJson(x.responseText)) {
+        const json = JSON.parse(x.responseText).query;
+        if (json) {
+          const pages = json.pages;
+          if (pages && pages.length > 0) {
+            const original = pages[0].original;
+            if (original) {
+              res = original.source;
             }
+          }
         }
-        
-        if (!res || res.length <= 0) {
-          res = '/Logo.png';
-        }
+      }
 
-        setFormInputs({ agentName: agentName });
-        setAgentImage(res);
+      if (!res || res.length <= 0) {
+        res = '/Logo.png';
+      }
+
+      setFormInputs({ agentName: agentName });
+      setAgentImage(res);
     }
     x.send();
   };
 
-  const onChange = (e) => 
+  const onChange = (e) =>
     setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
 
   const startConversation = async () => {
@@ -67,11 +67,11 @@ const App = () => {
       {pageState > 0 && (
         <div className="ChatWrapper">
           <Chat agentImage={agentImage} handleClick={() => { window.location.reload(false); setPageState(0); }} agentName={formInputs.agentName} startingMessage={startingMessage} />
-          </div>
+        </div>
       )}
       {pageState === 0 && (
         <div className="joinChatContainer">
-            <img src="/Logo.png" className="logo-big" />
+          <img src="/Logo.png" className="logo-big" />
           <input
             type="text"
             placeholder="Who or what do you want to talk to?"
@@ -83,44 +83,37 @@ const App = () => {
             onChange={onChange}
           />
           <button onClick={startConversation} />
-          <br/><br/><br/><br/>
+          <div style={{marginTop:"2em"}}>
           <b>Try talking to these AIs</b>
-          <br/><br/>
-          <center>
-          <table>
-            <tbody>
-            <tr>
-              <td><img src='tree.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('tree') }} /></td>
-              <td><img src='sunflower.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('sunflower') }} /></td>
-              <td><img src='rabbit.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('rabbit') }} /></td>
-              <td><img src='ant.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('ant') }} /></td>
-              <td><img src='rainbow.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('rainbow') }} /></td>
-              <td><img src='earth.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('earth') }} /></td>
-            </tr>
-            <tr>
-              <td><img src='socrates.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('socrates') }} /></td>
-              <td><img src='galileo.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('Galileo') }} /></td>
-              <td><img src='tesla.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('Nikola Tesla') }} /></td>
-              <td><img src='newton.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('Isaac Newton') }} /></td>
-              <td><img src='ada.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('Ada Lovelace') }} /></td>
-              <td><img src='rosalind.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('Rosalind Franklin') }} /></td>
-            </tr>
-            <tr>
-              <td><img src='energy.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('Mass–energy equivalence') }} /></td>
-              <td><img src='atom.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('atom') }} /></td>
-              <td><img src='caffeine.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('caffeine') }} /></td>
-              <td><img src='cell.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('cell (biology)') }} /></td>
-              <td><img src='sun.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('sun') }} /></td>
-              <td><img src='shakespeare.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('shakespeare') }} /></td>
-            </tr>
-            </tbody>
-          </table>
-          <br/><br/><br/><br/>
-          <ReactPlayer url='https://www.youtube.com/watch?v=Ar54k0sMWe0' />
-          </center>
-          <div className='App'>
-          <button><Link to="/editor" className="btn btn-primary">go to agent editor</Link></button>
-          <button><Link to="/config" className="btn btn-primary">go to config editor</Link></button>
+          </div>
+          <div className="flex-container" >
+
+            <span className="flex-item"><img src='tree.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('tree') }} /></span>
+                  <span className="flex-item"><img src='sunflower.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('sunflower') }} /></span>
+                  <span className="flex-item"><img src='rabbit.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('rabbit') }} /></span>
+                  <span className="flex-item"><img src='ant.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('ant') }} /></span>
+                  <span className="flex-item"><img src='rainbow.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('rainbow') }} /></span>
+ 
+                  <span className="flex-item"><img src='earth.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('earth') }} /></span>
+                  <span className="flex-item"><img src='socrates.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('socrates') }} /></span>
+                  <span className="flex-item"><img src='galileo.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('Galileo') }} /></span>
+                  <span className="flex-item"><img src='tesla.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('Nikola Tesla') }} /></span>
+                  <span className="flex-item"><img src='newton.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('Isaac Newton') }} /></span>
+
+                  <span className="flex-item"><img src='ada.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('Ada Lovelace') }} /></span>
+                  <span className="flex-item"><img src='rosalind.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('Rosalind Franklin') }} /></span>
+                  <span className="flex-item"><img src='energy.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('Mass–energy equivalence') }} /></span>
+                  <span className="flex-item"><img src='atom.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('atom') }} /></span>
+                  <span className="flex-item"><img src='caffeine.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('caffeine') }} /></span>
+
+                  <span className="flex-item"><img src='cell.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('cell (biology)') }} /></span>
+                  <span className="flex-item"><img src='sun.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('sun') }} /></span>
+                  <span className="flex-item"><img src='shakespeare.png' alt='ai' className='ai-img' onClick={async () => { await startConversationFromImage('shakespeare') }} /></span>
+                  </div>
+            <ReactPlayer style={{margin:"auto", padding:"3em"}} url='https://www.youtube.com/watch?v=Ar54k0sMWe0' />
+          <div className='EditorLinks'>
+            <span style={{margin: "2em", padding:"1em"}}><Link to="/editor" className="btn btn-primary">go to agent editor</Link></span>
+            <span style={{margin: "2em", padding:"1em"}}><Link to="/config" className="btn btn-primary">go to config editor</Link></span>
           </div>
         </div>
       )}

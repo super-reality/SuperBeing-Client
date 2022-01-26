@@ -172,7 +172,7 @@ left: 8%;
 }
 
 .chat-window .chat-body {
-  height: 100%;
+  height: 90%;
 
   position: relative;
 }
@@ -295,7 +295,6 @@ min-width:100%;
   vertical-align: middle;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2em;
 }
 
 .chat-window .chat-footer input {
@@ -332,3 +331,4 @@ min-width:100%;
 .hide {
   opacity: 0 !important;
 }
+
