@@ -121,6 +121,7 @@ const App = () => {
           <div className='App'>
           <button><Link to="/editor" className="btn btn-primary">go to agent editor</Link></button>
           <button><Link to="/config" className="btn btn-primary">go to config editor</Link></button>
+          <button><Link to="/profanity" className="btn btn-primary">go to profanity editor</Link></button>
           </div>
         </div>
       )}
