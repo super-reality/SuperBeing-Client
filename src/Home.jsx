@@ -4,6 +4,10 @@ import ReactPlayer from 'react-player';
 import { Link } from "react-router-dom";
 import Chat from './Chat';
 import { isJson } from "./utils";
+import { v4 as uuidv4 } from 'uuid';
+
+export const id = uuidv4();
+export const senderName = "Guest_" + id;
 
 const App = () => {
   const [formInputs, setFormInputs] = useState({ agentName: '' });
@@ -12,7 +16,7 @@ const App = () => {
   const [startingMessage, setStartingMessage] = useState('');
 
   const sendMessage = async (agentName) => {
-    const body = { agent: agentName, command: "/become " + agentName };
+    const body = { agent: agentName, command: "/become " + agentName, speaker: senderName, id: id };
     const res = await axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body);
     setStartingMessage(res.data.startingMessage);
     var x = new XMLHttpRequest();

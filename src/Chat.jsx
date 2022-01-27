@@ -4,11 +4,9 @@ import {
 } from 'better-react-spinkit';
 import React, { useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
-import { v4 as uuidv4 } from 'uuid';
 import AnimatedText from "./AnimatedText";
 import backButton from "./ArrowLeft.svg";
-
-const senderName = "Guest_" + uuidv4();
+import { id, senderName } from "./Home";
 
 const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {  
   const [currentMessage, setCurrentMessage] = useState('');
@@ -29,9 +27,8 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
             isAgent: false
           };
 
-    const body = { sender:senderName, agent:agentName, command: currentMessage };
+    const body = { sender:senderName, agent:agentName, command: currentMessage, id: id };
     axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
-      console.log("response is", res);
       const messageData = {
         message: res && res.data && res.data.result || agentName,
         isAgent: true
