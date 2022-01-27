@@ -25,7 +25,7 @@ code {
 
 .form-item {
   margin: 2em;
-  min-width: 80%;
+  width: 50%;
 }
 
 .form-item-label {
@@ -56,4 +56,10 @@ code {
 .admin-container {
   margin-left: 11em;
   margin-top: 1em;
+}
+
+.agent-select {
+
+margin:1em;
+
 }

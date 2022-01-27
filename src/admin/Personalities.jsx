@@ -1,13 +1,26 @@
 import axios from "axios";
-import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
-import Personality from "./Personality";
-import NewPersonality from "./NewPersonality";
+import React, { useEffect, useState } from 'react';
 
 const AIEditor = () => {
-  const [currentEditor, setCurrentEditor] = useState(0);
   const [agents, setAgents] = useState();
   const [currentAgentData, setCurrentAgentData] = useState(null);
+
+  const [dataUpdated, setDataUpdated] = useState(false);
+
+  const update = async () => {
+      if (!dataUpdated) {
+          return;
+      }
+
+      const body = { agentName: currentAgentData.agentName, data: data };
+      axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/update_agent`, body).then(res => {
+          if (res.data === 'ok') {
+              handleClick();
+          } else {
+              console.log(res.data);
+          }
+      });
+  }
 
   useEffect(() => {
     console.log("loading");
@@ -31,30 +44,101 @@ const AIEditor = () => {
   }
 }, [agents])
 
+const handleClick = (e) => {e.preventDefault(); setCurrentAgentData(null)};
+
   return (
     <div className="App">
       <div>
         { !agents ? (
           <h1>Loading...</h1>
         ) :  (
-          <div>
-          <h1>Agents:</h1> 
-          <select name="agents" id="agents" onChange={(event) => { 
-            const agent = agents[event.target.options.selectedIndex];
-            setCurrentAgentData(null);
-            axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/get_agent?agent=${agent}`).then(res => {
-              res.data.agentName = agent;
-              setCurrentAgentData(res.data);
-            });
-          }}>
-            {agents.map((agent, idx) =>
-              <option value={agent} key={idx}>{agent}</option>
-          )}
-          </select>
+          <div className="agent-header">
+          <h2>Agent: {currentAgentData != "" ? "Loading..." : currentAgentData.agentName}</h2>
+          <span className="agent-select">
+            <select name="agents" id="agents" onChange={(event) => { 
+              const agent = agents[event.target.options.selectedIndex];
+              setCurrentAgentData(null);
+              axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/get_agent?agent=${agent}`).then(res => {
+                res.data.agentName = agent;
+                setCurrentAgentData(res.data);
+              });
+            }}>
+              {agents.map((agent, idx) =>
+                <option value={agent} key={idx}>{agent}</option>
+            )}
+            </select>
+            </span>
           </div>
           )}
           {currentAgentData &&
-          <Personality data={currentAgentData} handleClick={(e) => {e.preventDefault(); setCurrentAgentData(null);} } />
+            <div>
+            <form>
+                <div className="form-item">
+                    <span className="form-item-label">Actions:</span>
+                    <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); currentAgentData.actions = e.target.value }} defaultValue={currentAgentData.actions}></textarea>
+                </div>
+
+                <div className="form-item">
+                    <span className="form-item-label">Dialogue:</span>
+                    <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); currentAgentData.dialogue = e.target.value }} defaultValue={currentAgentData.dialogue}></textarea>
+                </div>
+
+                <div className="form-item">
+                    <span className="form-item-label">Ethics:</span>
+                    <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); currentAgentData.ethics = e.target.value }} defaultValue={currentAgentData.ethics}></textarea>
+                </div>
+
+                <div className="form-item">
+                    <span className="form-item-label">Facts:</span>
+                    <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); currentAgentData.facts = e.target.value }} defaultValue={currentAgentData.facts}></textarea>
+                </div>
+
+                <div className="form-item">
+                    <span className="form-item-label">Monologue:</span>
+
+                    <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); currentAgentData.monologue = e.target.value }} defaultValue={currentAgentData.monologue}></textarea>
+                </div>
+
+                <div className="form-item">
+                    <span className="form-item-label">Needs and Motivations:</span>
+                    <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); currentAgentData.needsAndMotivation = e.target.value }} defaultValue={currentAgentData.needsAndMotivation}></textarea>
+                </div>
+
+                <div className="form-item">
+                    <span className="form-item-label">Personality:</span>
+                    <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); currentAgentData.personality = e.target.value }} defaultValue={currentAgentData.personality}></textarea>
+                </div>
+
+                <div className="form-item">
+                    <span className="form-item-label">Relationship Matrix:</span>
+                    <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); currentAgentData.relationshipMatrix = e.target.value }} defaultValue={currentAgentData.relationshipMatrix}></textarea>
+                </div>
+
+                <div className="form-item">
+                    <span className="form-item-label">Room:</span>
+                    <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); currentAgentData.room = e.target.value }} defaultValue={currentAgentData.room}></textarea>
+                </div>
+
+                <div className="form-item">
+                    <span className="form-item-label">Starting Phrases:</span>
+                    <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); currentAgentData.startingPhrases = e.target.value }} defaultValue={currentAgentData.startingPhrases}></textarea>
+                </div>
+
+                <div className="form-item">
+                    <span className="form-item-label">Ignored Keywords:</span>
+                    <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); currentAgentData.ignoredKeywords = e.target.value }} defaultValue={currentAgentData.ignoredKeywords}></textarea>
+                </div>
+
+                <input type='button' value='Update' onClick={update} />
+                <input type='button' value='Delete' onClick={() => {
+                    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/delete_agent`, { agentName: currentAgentData.agentName }).then(res => {
+                        handleClick();
+                    });
+                }} />
+            </form>
+        </div>
+
+
           }
       </div>
     </div>
