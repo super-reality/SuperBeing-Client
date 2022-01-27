@@ -60,7 +60,7 @@ const AgentEditor = ({ data, handleClick }) => {
                 </div>
 
                 <div className="form-item">
-                    <span className="form-item-label">Needs and Motivations:</span>
+                    <span className="form-item-label">Personality:</span>
                     <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); data.personality = e.target.value }} defaultValue={data.personality}></textarea>
                 </div>
 
