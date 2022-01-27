@@ -63,7 +63,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <img src='SuperReality_Background.svg' width="100%" alt='background' />
+      <img src='SuperReality_Background.svg' style={{position:"absolute"}} width="100%" alt='background' />
       {pageState > 0 && (
         <div className="ChatWrapper">
           <Chat agentImage={agentImage} handleClick={() => { window.location.reload(false); setPageState(0); }} agentName={formInputs.agentName} startingMessage={startingMessage} />
