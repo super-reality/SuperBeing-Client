@@ -114,6 +114,7 @@ const App = () => {
           <div className='EditorLinks'>
             <span style={{margin: "2em", padding:"1em"}}><Link to="/editor" className="btn btn-primary">go to agent editor</Link></span>
             <span style={{margin: "2em", padding:"1em"}}><Link to="/config" className="btn btn-primary">go to config editor</Link></span>
+            <span style={{margin: "2em", padding:"1em"}}><Link to="/profanity" className="btn btn-primary">go to profanity editor</Link></span>
           </div>
         </div>
       )}
