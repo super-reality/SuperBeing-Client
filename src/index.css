@@ -34,5 +34,26 @@ code {
 }
 
 .form-text-area {
-  width: 100%;
+  width:100%;
+}
+
+.nav-item, .nav-item-active {
+  display:block;
+  margin:1em;
+}
+
+.nav {
+  width: 10em;
+  background-color: #f1f1f1;
+  height: 100vh;
+  margin:0;
+  margin-right:1em;
+  position:fixed;
+  left:0;
+  top:0;
+}
+
+.admin-container {
+  margin-left: 11em;
+  margin-top: 1em;
 }
