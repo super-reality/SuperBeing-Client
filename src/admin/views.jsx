@@ -2,5 +2,8 @@ export const views = {
   Dashboard: "dashboard",
   Personalities: "personalities",
   Settings: "settings",
-  Profanity: "profanity"
+  AgentsSettings: "agentsSettings",
+  Profanity: "profanity",
+  Agents: 'agents',
+  Prompts: 'prompts'
 };

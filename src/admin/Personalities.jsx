@@ -23,11 +23,9 @@ const AIEditor = () => {
   }
 
   useEffect(() => {
-    console.log("loading");
     if (!agents) {
 
     axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/get_agents`).then(res => {
-      console.log("res is", res)
       let newAgents = [];
       for(let i = 0; i < res.data.length; i++) {
         newAgents.push(res.data[i]);
