@@ -45,8 +45,12 @@ code {
 
 .nav-item-active {
   display:block;
-  margin:1em;
+  margin:2em;
   color: green;
+}
+
+.nav-item:hover {
+  opacity: 0.5;
 }
 
 .nav {
