@@ -85,6 +85,9 @@ const NewAgentEditor = ({ handleClick }) => {
             <label>Ignored Keywords: 
                 <textarea onChange={(e) => {agentData.ignoredKeywords = e.target.value}} defaultValue=''></textarea> 
             </label><br/><br/>
+            <label>Agent's Config: 
+                <textarea onChange={(e) => {agentData.agentsConfig = e.target.value}} defaultValue=''></textarea> 
+            </label><br/><br/>
             <input type='button' value='Add' onClick={update} />
         </form>
         </center>
