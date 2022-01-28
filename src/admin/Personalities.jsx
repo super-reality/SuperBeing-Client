@@ -24,7 +24,6 @@ const AIEditor = () => {
 
   useEffect(() => {
     if (!agents) {
-
     axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/get_agents`).then(res => {
       let newAgents = [];
       for(let i = 0; i < res.data.length; i++) {
@@ -37,8 +36,6 @@ const AIEditor = () => {
         setCurrentAgentData(res.data);
       });
     });
-  } else {
-    console.log("agents", agents);
   }
 }, [agents])
 
