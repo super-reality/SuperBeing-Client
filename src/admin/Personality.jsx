@@ -79,6 +79,11 @@ const Personality = ({ data, handleClick }) => {
                     <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); data.ignoredKeywords = e.target.value }} defaultValue={data.ignoredKeywords}></textarea>
                 </div>
 
+                <div className="form-item">
+                    <span className="form-item-label">Ignored Keywords:</span>
+                    <textarea className="form-text-area" onChange={(e) => { setDataUpdated(true); data.agentsConfig = e.target.value }} defaultValue={data.agentsConfig}></textarea>
+                </div>
+
                 <input type='button' value='Update' onClick={update} />
                 <input type='button' value='Delete' onClick={() => {
                     axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/delete_agent`, { agentName: data.agentName }).then(res => {

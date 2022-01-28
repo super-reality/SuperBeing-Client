@@ -23,11 +23,8 @@ const AIEditor = () => {
   }
 
   useEffect(() => {
-    console.log("loading");
     if (!agents) {
-
     axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/get_agents`).then(res => {
-      console.log("res is", res)
       let newAgents = [];
       for(let i = 0; i < res.data.length; i++) {
         newAgents.push(res.data[i]);
@@ -39,8 +36,6 @@ const AIEditor = () => {
         setCurrentAgentData(res.data);
       });
     });
-  } else {
-    console.log("agents", agents);
   }
 }, [agents])
 
@@ -53,7 +48,7 @@ const handleClick = (e) => {e.preventDefault(); setCurrentAgentData(null)};
           <h1>Loading...</h1>
         ) :  (
           <div className="agent-header">
-          <h2>Agent: {currentAgentData != "" ? "Loading..." : currentAgentData.agentName}</h2>
+          <h2>Agent: {currentAgentData ? currentAgentData.agentName :  "Loading..."  }</h2>
           <span className="agent-select">
             <select name="agents" id="agents" onChange={(event) => { 
               const agent = agents[event.target.options.selectedIndex];

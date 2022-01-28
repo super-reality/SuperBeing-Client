@@ -4,6 +4,10 @@ import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
 import Chat from "./Chat";
 import { isJson } from "./utils";
+import { v4 as uuidv4 } from 'uuid';
+
+export const id = uuidv4();
+export const senderName = "Guest_" + id;
 
 const App = () => {
   const [formInputs, setFormInputs] = useState({ agentName: "" });
@@ -12,11 +16,8 @@ const App = () => {
   const [startingMessage, setStartingMessage] = useState("");
 
   const sendMessage = async (agentName) => {
-    const body = { agent: agentName, command: "/become " + agentName };
-    const res = await axios.post(
-      `${process.env.VITE_SERVER_CONNECTION_URL}/execute`,
-      body
-    );
+    const body = { agent: agentName, command: "/become " + agentName, speaker: senderName, id: id };
+    const res = await axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body);
     setStartingMessage(res.data.startingMessage);
     var x = new XMLHttpRequest();
     x.open(
@@ -264,7 +265,6 @@ const App = () => {
                 }}
               />
             </span>
-
             <span className="flex-item">
               <img
                 src="cell.png"
@@ -306,18 +306,8 @@ const App = () => {
           />
           <div className="EditorLinks">
             <span>
-              <Link to="/editor" className="btn btn-primary">
-                go to agent editor
-              </Link>
-            </span>
-            <span>
-              <Link to="/config" className="btn btn-primary">
-                go to config editor
-              </Link>
-            </span>
-            <span>
-              <Link to="/profanity" className="btn btn-primary">
-                go to profanity editor
+              <Link to="/admin" className="btn btn-primary">
+                admin
               </Link>
             </span>
           </div>
