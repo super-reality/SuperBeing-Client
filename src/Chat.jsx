@@ -4,9 +4,6 @@ import {
 } from 'better-react-spinkit';
 import React, { useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
-import { Wave } from "better-react-spinkit";
-import React, { useState } from "react";
-import ScrollToBottom from "react-scroll-to-bottom";
 import AnimatedText from "./AnimatedText";
 import backButton from "./ArrowLeft.svg";
 import { id, senderName } from "./Home";

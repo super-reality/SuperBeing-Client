@@ -53,7 +53,7 @@ const handleClick = (e) => {e.preventDefault(); setCurrentAgentData(null)};
           <h1>Loading...</h1>
         ) :  (
           <div className="agent-header">
-          <h2>Agent: {currentAgentData != "" ? "Loading..." : currentAgentData.agentName}</h2>
+          <h2>Agent: {currentAgentData ? currentAgentData.agentName :  "Loading..."  }</h2>
           <span className="agent-select">
             <select name="agents" id="agents" onChange={(event) => { 
               const agent = agents[event.target.options.selectedIndex];

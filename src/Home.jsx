@@ -306,23 +306,8 @@ const App = () => {
           />
           <div className="EditorLinks">
             <span>
-              <Link to="/editor" className="btn btn-primary">
-                go to agent editor
-              </Link>
-            </span>
-            <span>
-              <Link to="/config" className="btn btn-primary">
-                go to config editor
-              </Link>
-            </span>
-            <span>
-              <Link to="/profanity" className="btn btn-primary">
-                go to profanity editor
-              </Link>
-            </span>
-            <span>
-              <Link to="/agents_config" className="btn btn-primary">
-                go to agents' config editor
+              <Link to="/admin" className="btn btn-primary">
+                admin
               </Link>
             </span>
           </div>
