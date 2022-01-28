@@ -63,7 +63,6 @@ const ConfigEditor = () => {
   return (
     <div className="App">
       <div>
-      <button><Link to="/" className="btn btn-primary">back</Link></button>
         { firstLoad ? (
           <h1>Loading...</h1>
         ) : (

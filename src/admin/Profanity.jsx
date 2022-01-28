@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import ProfanitySelectedEditor from "./ProfanitySelectedEditor";
+import ProfanitySelectedEditor from "./ProfanitySelected";
 
 const ProfanityEditor = () => {
   const [editor, setEditor] = useState(0);
@@ -8,7 +8,6 @@ const ProfanityEditor = () => {
   return (
     <div className="App">
       <div>
-      <button><Link to="/" className="btn btn-primary">back</Link></button>
         { editor === 0 ? (
             <div>
                 <h1>Profanity Editor</h1>
@@ -19,7 +18,6 @@ const ProfanityEditor = () => {
             </div>
         ) : (
             <div>
-                <button onClick={() => setEditor(0)}>Back</button>
                 <ProfanitySelectedEditor editorId={editor} /> 
             </div>
         )}

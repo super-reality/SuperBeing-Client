@@ -1,7 +1,5 @@
 import axios from 'axios';
-import React, {  } from 'react';
-import { useRef } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const NewAgentEditor = ({ handleClick }) => {  
     const [agentData, setAgentData] = useState({});
@@ -39,9 +37,6 @@ const NewAgentEditor = ({ handleClick }) => {
 
   return (
       <div>
-        <div className="back">
-            <img alt='back' onClick={() => handleClick()} />
-        </div>
         <center>
         <label>Import agent through SQL:
             <input type="file" onChange={(e) => showFile(e)} />

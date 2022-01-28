@@ -11,6 +11,7 @@ import AIEditor from "./AIEditor";
 import ConfigEditor from './ConfigEditor';
 import ProfanityEditor from './ProfanityEditor';
 import AgentsConfigEditor from './AgentsConfigEditor';
+import AdminPanel from "./admin";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/config" element={<ConfigEditor />} />
         <Route path="/profanity" element={<ProfanityEditor />} />
         <Route path="/agents_config" element={<AgentsConfigEditor />} />
+        <Route path="/admin" element={<AdminPanel />} />
       </Routes>
     </Router>
   );

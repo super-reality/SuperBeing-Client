@@ -3,23 +3,39 @@
   height: 100vh;
   background: #fff;
   color: #212121;
-  font-family: 'Open Sans', sans-serif;
-  display: grid;
-  place-items: center;
+  font-family: "Open Sans", sans-serif;
 }
 body {
   margin: 0%;
   padding: 0%;
 }
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
 
 .ChatWrapper {
-  width:100%;
-  height:100%;
-  min-height:400px;
-  margin:0;
-  padding:0;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  margin: 0;
+  padding: 0;
   z-index: 100;
+}
+
+.EditorLinks {
+  max-width: 640px;
+  width: calc(100% - 4em);
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+  .EditorLinks {
+    flex-direction: column;
+  }
+
+  .EditorLinks span {
+    margin-bottom: 2em;
+  }
 }
 
 .background {
@@ -34,20 +50,22 @@ body {
 
 .back {
   /* position: fixed; */
-  left:1em;
+  left: 1em;
   top: 1em;
 }
 
 .logo-big {
-  margin-left:auto;
-  margin-right:auto;
-  display:block;
+  width: 20em;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .svg1 {
   margin-left: auto;
   margin-right: auto;
-  display:block;
+  display: block;
   top: 442px;
   left: 550px;
   width: 181;
@@ -58,24 +76,25 @@ body {
   position: absolute;
   top: 0px;
   right: 0px;
-  margin-left:auto;
-  margin-right:auto;
-  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
   width: 50px;
-  height:50px;
+  height: 50px;
   border-radius: 100%;
   box-shadow: 0 0 0 4px lightgray;
 }
 
-.ai-img { 
-  border-radius: 18%;
-  width: 140px;
-  height: 160px;
+.ai-img {
+  margin: auto;
+  border-radius: 0.5em;
+  width: 8em;
+  height: 9em;
   object-fit: cover;
 }
 
 .ai-img:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .video-responsive {
@@ -93,52 +112,62 @@ body {
   position: absolute;
 }
 
-
-
 .joinChatContainer {
   flex-direction: column;
   text-align: center;
   vertical-align: middle;
-  width:100%;
-  height:100%;
-  position:absolute;
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 
-.joinChatContainer input {
+.mainInput {
+  max-width: 100%;
   width: 26em;
-  height: 1em;
+  height: 2em;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+
+.mainInput input {
+  width: 100%;
+  height: 100%;
+  padding: 0;
   border: 2px solid #ccc;
   border-radius: 2em;
-  padding: 1em;
   font-size: 16px;
   text-align: center;
   display: inline-block;
   box-sizing: border-box;
-  vertical-align: middle;}
+  vertical-align: middle;
+  position: absolute;
+}
 
-.joinChatContainer button {
+.mainInput button {
   width: 1.5em;
   height: 1.5em;
   border: none;
   padding: 0;
-  background-color: rgba(0,0,0,0);
-  background-image: url("./ArrowRight.svg"); 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url("./ArrowRight.svg");
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
   display: inline-block;
   box-sizing: border-box;
   vertical-align: middle;
-  position:relative;
-  left:-2.25em;
+  position: absolute;
+  right: 1.15em;
+  top: 0.5em;
 }
 
 .TalkingTo {
   top: 1.5em;
   position: absolute;
   width: 100%;
-  text-align:center;
+  text-align: center;
 }
 
 .chat-window {
@@ -146,24 +175,23 @@ body {
   top: 8%;
   width: 80%;
   height: 80%;
-  min-height:400px;
+  min-height: 400px;
   margin-right: auto;
   margin-left: auto;
   border-radius: 1em;
   background-color: #fff;
   border: 2px solid #ccc;
   padding: 2%;
-left: 8%;
+  left: 8%;
 }
 
-.loadingSpinner div{
-  width:100px;
-  height:100px;
-  margin-top:1em;
-  margin-left:auto;
-  margin-right:auto;
+.loadingSpinner div {
+  width: 100px;
+  height: 100px;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 
 .chat-window p {
   margin: 0;
@@ -195,18 +223,18 @@ left: 8%;
   margin-right: 1em;
   float: left;
   width: 4em;
-  height:4em;
+  height: 4em;
   border-radius: 100%;
   border: 2px solid red;
-  margin-bottom:2em;
+  margin-bottom: 2em;
 }
 
 .image-chat-user-user {
-  margin-left:auto;
-  margin-right:auto;
-  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
   width: 100px;
-  height:100px;
+  height: 100px;
   top: 5em;
   border-radius: 100%;
   object-fit: cover;
@@ -226,7 +254,6 @@ left: 8%;
   word-break: break-word;
   offset-anchor: right;
   vertical-align: middle;
-
 }
 
 .chat-window .chat-body .message .message-content-user {
@@ -247,14 +274,13 @@ left: 8%;
 }
 
 .chat-window .chat-body .message > div {
-width:100%;
-min-width:100%;
+  width: 100%;
+  min-width: 100%;
 }
-
 
 #you {
   justify-content: flex-end;
-  width:100%;
+  width: 100%;
 }
 
 #you .message-content {
@@ -297,38 +323,6 @@ min-width:100%;
   margin-right: auto;
 }
 
-.chat-window .chat-footer input {
-  width: 30em;
-  height: 1em;
-  border: 2px solid #ccc;
-  border-radius: 2em;
-  padding: 1em;
-  font-size: 16px;
-  text-align: left;
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: middle;
-}
-
-.chat-window .chat-footer button {
-  width: 1.5em;
-  height: 1.5em;
-  border: none;
-  padding: 0;
-  background-color: rgba(0,0,0,0);
-  background-image: url("./ArrowRight.svg"); 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: middle;
-  position:relative;
-  left:-2.25em;
-}
-
 .hide {
   opacity: 0 !important;
 }
-
