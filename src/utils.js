@@ -6,3 +6,8 @@ export function isJson(str) {
     }
     return true;
 }
+
+export function capitalizeFirstLetter(word) {
+    if (!word || word === undefined) word = '';
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
