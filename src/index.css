@@ -37,9 +37,20 @@ code {
   width:100%;
 }
 
-.nav-item, .nav-item-active {
+.nav-item {
   display:block;
   margin:1em;
+  color: black;
+}
+
+.nav-item-active {
+  display:block;
+  margin:2em;
+  color: green;
+}
+
+.nav-item:hover {
+  opacity: 0.5;
 }
 
 .nav {
