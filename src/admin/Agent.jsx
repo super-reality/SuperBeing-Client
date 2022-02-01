@@ -7,11 +7,12 @@ const Agent = ({ id }) => {
     const [data, setData] = useState([]);
     const [personality, setPersonality] = useState('');
     const [instanceId, setInstanceId] = useState('1');
-    const [enabled, setEnabled] = useState(false);
+    const [enabled, setEnabled] = useState({ value: false });
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(true);
+    const [updated, setUpdated] = useState(true);
 
     useEffect(async () => {
-        setEnabled(false);
         const res = await axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/agentInstance?instanceId=` + id);
 
         const d = isJson(res.data.clients) ? JSON.parse(res.data.clients) : res.data.clients;
@@ -23,7 +24,8 @@ const Agent = ({ id }) => {
         setData(_data);
         setPersonality(res.data.personality);
         setInstanceId(res.data.id);
-        setEnabled(res.data.enabled === 'true');
+        enabled.value = res.data._enabled;
+        setIsLoading(false);
     }, [])
 
     const _delete = () => {
@@ -41,7 +43,7 @@ const Agent = ({ id }) => {
             id: instanceId,
             personality: personality,
             clients: data,
-            enabled: enabled
+            enabled: enabled.value
         };
         axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/agentInstance`, { data: _data }).then(res => {
             if (res.data === 'ok') {
@@ -57,11 +59,12 @@ const Agent = ({ id }) => {
             <div key={idx} >
                 <input type='checkbox' defaultChecked={value.enabled == 'true'} onChange={(e) => {
                     data[idx].enabled = e.target.checked.toString()
+                    setUpdated(!updated);
                 }}></input>
 
                 <span className="form-item-label">{capitalizeFirstLetter(value.client)}</span>
 
-                {
+                { value.enabled == 'true' && 
                     value.settings.map((v2, idx2) => {
                         return (
                             <div key={idx2} >
@@ -69,19 +72,21 @@ const Agent = ({ id }) => {
                                 <textarea defaultValue={v2.value} onChange={(e) => { data[idx].settings[idx2] = { name: v2.name, value: e.target.value } }} />
                             </div>
                         )
-                    }
-
-                    )}
+                    })
+                }
             </div>
         )
     }
 
     return (
         <div>
+            { isLoading ? 'Loading...' :
+             (
+                 <div>
             <div className="form-item">
                 <span className="form-item-label">Enabled</span>
-                <input type='checkbox' defaultChecked={enabled} onChange={(e) => {
-                    setEnabled(e.target.checked)
+                    <input type='checkbox' defaultChecked={enabled.value} onChange={(e) => {
+                    enabled.value = e.target.checked
                 }} />
             </div>
 
@@ -101,10 +106,12 @@ const Agent = ({ id }) => {
             </div>
 
 
-            {enabled && data.map((value, idx) => {
-                return <FormItem key={idx} value={value} />
+            {enabled.value && data.map((value, idx) => {
+                return <FormItem idx={idx} value={value} />
             })}
-                </div>
+            </div>
+            )}
+        </div>
     )
 }
 

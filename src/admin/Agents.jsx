@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { capitalizeFirstLetter, isJson } from '../utils';
 import Agent from "./Agent";
 
 const Agents = () => {
