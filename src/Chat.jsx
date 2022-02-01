@@ -1,9 +1,7 @@
 import axios from "axios";
-import {
-  Wave
-} from 'better-react-spinkit';
-import React, { useState } from 'react';
-import ScrollToBottom from 'react-scroll-to-bottom';
+import { Wave } from "better-react-spinkit";
+import React, { useState } from "react";
+import ScrollToBottom from "react-scroll-to-bottom";
 import AnimatedText from "./AnimatedText";
 import backButton from "./ArrowLeft.svg";
 import { id, senderName } from "./Home";
@@ -75,26 +73,22 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
           <ScrollToBottom className="message-container">
             {messageList.map((messageContent, idx) => {
               return (
-                <div
-                  className="message"
-                  id={messageContent.isAgent ? "other" : "you"}
-                  key={idx}
-                >
-                  <div>
-                    {messageContent.isAgent ? (
-                      <div className="message-content-agent">
-                        <img src={agentImage} className="image-chat-agent" />
-                        &nbsp;&nbsp;
+                <div className="message" key={idx}>
+                  {messageContent.isAgent ? (
+                    <div className="message-content-agent">
+                      <img src={agentImage} className="image-chat" />
+                      <div className="message-text">
                         {messageContent.message}
                       </div>
-                    ) : (
-                      <div className="message-content-user">
+                    </div>
+                  ) : (
+                    <div className="message-content-user">
+                      <div className="message-text">
                         {messageContent.message}
-                        &nbsp;&nbsp;
-                        <img src="User_Icon.svg" className="image-chat-user" />
                       </div>
-                    )}
-                  </div>
+                      <img src="User_Icon.svg" className="image-chat" />
+                    </div>
+                  )}
                 </div>
               );
             })}
