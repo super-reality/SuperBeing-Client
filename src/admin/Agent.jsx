@@ -87,6 +87,7 @@ const Agent = ({ id }) => {
                 <span className="form-item-label">Enabled</span>
                     <input type='checkbox' defaultChecked={enabled.value} onChange={(e) => {
                     enabled.value = e.target.checked
+                    setUpdated(!updated);
                 }} />
             </div>
 
