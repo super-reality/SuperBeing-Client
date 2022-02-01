@@ -10,7 +10,7 @@ const ConfigEditor = () => {
   const navigate = useNavigate();
 
   if (firstLoad) {
-    axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/get_config`).then(res => {
+    axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/config`).then(res => {
         setConfig(res.data.config);
         setFirstLoad(false);  
     });
@@ -23,7 +23,7 @@ const ConfigEditor = () => {
     }
 
     const body = { config: config };
-    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/update_config`, body).then(res => {
+    axios.put(`${process.env.VITE_SERVER_CONNECTION_URL}/config`, body).then(res => {
         if (res.data === 'ok') {
           navigate('/');
         } else {
@@ -34,7 +34,7 @@ const ConfigEditor = () => {
 
   const _delete = async(key) => {
     const body = { data: { key: key } };
-    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/delete_config`, body).then(res => {
+    axios.delete(`${process.env.VITE_SERVER_CONNECTION_URL}/config`, body).then(res => {
         if (res.data === 'ok') {
           navigate('/');
         } else {
@@ -49,7 +49,7 @@ const ConfigEditor = () => {
     }
 
     const body = { data: { key: newConfig.key, value: newConfig.value } };
-    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/add_config`, body).then(res => {
+    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/config`, body).then(res => {
         if (res.data === 'ok') {
           navigate('/');
         } else {

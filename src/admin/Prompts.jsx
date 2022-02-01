@@ -10,14 +10,14 @@ const Prompts = () => {
     const navigate = useNavigate();
 
     if (firstLoad) {
-        axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/get_prompts`).then(res => {
+        axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/prompts`).then(res => {
           setData(res.data);
           setFirstLoad(false);
         });
     }
 
     const update = async() => {
-        axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/set_prompts`, { data: data }).then(res => {
+        axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/prompts`, { data: data }).then(res => {
             if (res.data === 'ok') {
                 navigate('/');
             } else {

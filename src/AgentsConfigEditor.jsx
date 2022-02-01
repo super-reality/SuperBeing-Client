@@ -9,7 +9,7 @@ const AgentsConfigEditor = () => {
   const navigate = useNavigate();
 
   if (firstLoad) {
-    axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/get_agents_config`).then(res => {
+    axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/agentConfig`).then(res => {
       setConfig(res.data);
       setFirstLoad(false);
     });
@@ -21,7 +21,7 @@ const AgentsConfigEditor = () => {
       }
 
       const body = { data: config };
-      axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/set_agents_config`, body).then(res => {
+      axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/agentConfig`, body).then(res => {
           if (res.data === 'ok') {
               navigate('/');
           } else {
