@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import AnimatedText from "./AnimatedText";
 import backButton from "./ArrowLeft.svg";
-import { id, senderName } from "./Home";
+import { senderName } from "./Home";
+import "./ChatWindow.css";
 
 const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -59,14 +60,18 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
 
   return (
     <div className="chat-window">
-      <div className="back">
-        <img src={backButton} onClick={() => handleClick()} />
+      <div className="chat-title">
+        <img
+          className="chat-back"
+          src={backButton}
+          onClick={() => handleClick()}
+        />
+        {agentName && (
+          <div className="chat-talking-to">
+            Talking to <b>{agentName}</b>
+          </div>
+        )}
       </div>
-      {agentName && (
-        <div className="TalkingTo">
-          Talking to <b>{agentName}</b>
-        </div>
-      )}
 
       <div className="chat-body">
         {firstMessage ? (

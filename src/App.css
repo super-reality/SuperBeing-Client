@@ -11,17 +11,12 @@
 body {
   margin: 0%;
   padding: 0%;
-  width: 100vw;
-  height: 100vh;
+  overflow: hidden;
 }
 
-.ChatWrapper {
-  width: 100%;
-  height: 100%;
-  min-height: 400px;
-  margin: 0;
-  padding: 0;
-  z-index: 100;
+#root {
+  width: 100vw;
+  height: 100vh;
 }
 
 .EditorLinks {
@@ -50,12 +45,6 @@ body {
   position: absolute;
   object-fit: cover;
   border-color: transparent;
-}
-
-.back {
-  /* position: fixed; */
-  left: 1em;
-  top: 1em;
 }
 
 .logo-big {
@@ -169,25 +158,10 @@ body {
 
 .TalkingTo {
   top: 1.5em;
-  position: absolute;
   width: 100%;
   text-align: center;
 }
 
-.chat-window {
-  position: absolute;
-  top: 8%;
-  width: 80%;
-  height: 80%;
-  min-height: 400px;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 1em;
-  background-color: #fff;
-  border: 2px solid #ccc;
-  padding: 2%;
-  left: 8%;
-}
 
 .loadingSpinner div {
   width: 100px;
@@ -197,93 +171,6 @@ body {
   margin-right: auto;
 }
 
-.chat-window p {
-  margin: 0;
-  width: 100%;
-  text-align: right;
-}
-
-.chat-window .chat-body {
-  height: 90%;
-
-  position: relative;
-}
-
-.chat-window .chat-body .message-container {
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.chat-window .chat-body .message-container::-webkit-scrollbar {
-  display: none;
-}
-
-.chat-window .chat-body .message {
-  width: calc(100% - 1em);
-  height: auto;
-  padding-bottom: 10px;
-}
-
-.image-chat {
-  width: 4em;
-  height: 4em;
-  min-width: 4em;
-  min-height: 4em;
-  border-radius: 100%;
-}
-
-.message-content-agent .image-chat {
-  border: 2px solid red;
-  margin-right: 1em;
-}
-
-.message-content-user .image-chat {
-  object-fit: cover;
-  margin-left: 1em;
-}
-
-.chat-window .chat-body .message .message-content-agent {
-  display: flex;
-  width: calc(100% - 4em);
-  height: auto;
-  min-height: 6em;
-  color: #777777;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  text-align: left;
-}
-
-.chat-window .chat-body .message .message-content-user {
-  display: flex;
-  width: calc(100% - 4em);
-  height: auto;
-  min-height: 6em;
-  color: #777777;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  text-align: right;
-}
-
-.message-text {
-  width: auto;
-  flex-grow: 2;
-}
-
-.chat-window .chat-body .message>div {
-  width: calc(100% - 1em);
-  width: 100%;
-  min-width: 100%;
-}
-
-.chat-window .chat-footer {
-  flex-direction: column;
-  text-align: center;
-  vertical-align: middle;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .hide {
   opacity: 0 !important;
