@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
 
 .App {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: #fff;
   color: #212121;
   font-family: "Open Sans", sans-serif;
@@ -11,12 +11,10 @@
 body {
   margin: 0%;
   padding: 0%;
-  overflow: hidden;
 }
 
 #root {
   width: 100vw;
-  height: 100vh;
 }
 
 .EditorLinks {
@@ -110,7 +108,6 @@ body {
   text-align: center;
   vertical-align: middle;
   width: 100%;
-  height: 100%;
   position: absolute;
 }
 
