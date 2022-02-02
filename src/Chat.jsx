@@ -2,7 +2,7 @@ import axios from "axios";
 import { Wave } from "better-react-spinkit";
 import React, { useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
-import AnimatedText from "./AnimatedText";
+import AnimatedTypingText from "./AnimatedTypingText";
 import backButton from "./ArrowLeft.svg";
 import { senderName } from "./Home";
 import "./ChatWindow.css";
@@ -111,7 +111,9 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
       {firstMessage ? (
         <div className="chat-footer">
           {typing ? (
-            <AnimatedText input="Typing..." effect="stretch" effectChange={4} />
+            <i style={{ marginBottom: "8px" }}>
+              <AnimatedTypingText text={agentName + " is typing"} />
+            </i>
           ) : null}
           <div className="mainInput" style={{ width: "100%" }}>
             <input
