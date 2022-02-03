@@ -8,7 +8,7 @@ const Agents = () => {
     const navigate = useNavigate();
 
     const createNew = () => {
-        axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/agentInstance`, { data: {} }).then(res => {
+        axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/agentInstance`, { data: { id: -1, personality: 'Thales', clients: 'none', enabled: true } }).then(res => {
             if (res.data === 'ok') {
                 navigate('/');
             } else {
