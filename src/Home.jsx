@@ -4,10 +4,30 @@ import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
 import Chat from "./Chat";
 import { isJson } from "./utils";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 export const id = uuidv4();
 export const senderName = "Guest_" + id;
+
+import treeImage from "./assets/images/tree.png";
+import sunflowerImage from "./assets/images/sunflower.png";
+import rabbitImage from "./assets/images/rabbit.png";
+import antImage from "./assets/images/ant.png";
+import rainbowImage from "./assets/images/rainbow.png";
+import earthImage from "./assets/images/earth.png";
+import socratesImage from "./assets/images/socrates.png";
+import galileoImage from "./assets/images/galileo.png";
+import teslaImage from "./assets/images/tesla.png";
+import newtonImage from "./assets/images/newton.png";
+import adaImage from "./assets/images/ada.png";
+import rosalindImage from "./assets/images/rosalind.png";
+import energyImage from "./assets/images/energy.png";
+import atomImage from "./assets/images/atom.png";
+import caffeineImage from "./assets/images/caffeine.png";
+import cellImage from "./assets/images/cell.png";
+import sunImage from "./assets/images/sun.png";
+import shakespeareImage from "./assets/images/shakespeare.png";
+import AiImage from "./AiImage";
 
 const App = () => {
   const [formInputs, setFormInputs] = useState({ agentName: "" });
@@ -16,8 +36,16 @@ const App = () => {
   const [startingMessage, setStartingMessage] = useState("");
 
   const sendMessage = async (agentName) => {
-    const body = { agent: agentName, command: "/become " + agentName, speaker: senderName, id: id };
-    const res = await axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body);
+    const body = {
+      agent: agentName,
+      command: "/become " + agentName,
+      speaker: senderName,
+      id: id,
+    };
+    const res = await axios.post(
+      `${process.env.VITE_SERVER_CONNECTION_URL}/execute`,
+      body
+    );
     setStartingMessage(res.data.startingMessage);
     var x = new XMLHttpRequest();
     x.open(
@@ -79,7 +107,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <img src='SuperReality_Background.svg' style={{position:"absolute"}} width="100%" alt='background' />
+      <img
+        src="SuperReality_Background.svg"
+        style={{ position: "absolute" }}
+        width="100%"
+        alt="background"
+      />
       {pageState > 0 && (
         <div className="ChatWrapper">
           <Chat
@@ -113,188 +146,98 @@ const App = () => {
             <b>Try talking to these AIs</b>
           </div>
           <div className="flex-container">
-            <span className="flex-item">
-              <img
-                src="tree.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("tree");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="sunflower.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("sunflower");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="rabbit.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("rabbit");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="ant.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("ant");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="rainbow.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("rainbow");
-                }}
-              />
-            </span>
-
-            <span className="flex-item">
-              <img
-                src="earth.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("earth");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="socrates.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("socrates");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="galileo.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("Galileo");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="tesla.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("Nikola Tesla");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="newton.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("Isaac Newton");
-                }}
-              />
-            </span>
-
-            <span className="flex-item">
-              <img
-                src="ada.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("Ada Lovelace");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="rosalind.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("Rosalind Franklin");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="energy.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("Mass–energy equivalence");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="atom.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("atom");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="caffeine.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("caffeine");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="cell.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("cell (biology)");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="sun.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("sun");
-                }}
-              />
-            </span>
-            <span className="flex-item">
-              <img
-                src="shakespeare.png"
-                alt="ai"
-                className="ai-img"
-                onClick={async () => {
-                  await startConversationFromImage("shakespeare");
-                }}
-              />
-            </span>
+            <AiImage
+              back={treeImage}
+              name="Tree"
+              onClick={() => startConversationFromImage("tree")}
+            />
+            <AiImage
+              back={sunflowerImage}
+              name="Sunflower"
+              onClick={() => startConversationFromImage("sunflower")}
+            />
+            <AiImage
+              back={rabbitImage}
+              name="Rabbit"
+              onClick={() => startConversationFromImage("rabbit")}
+            />
+            <AiImage
+              back={antImage}
+              name="Ant"
+              onClick={() => startConversationFromImage("ant")}
+            />
+            <AiImage
+              back={rainbowImage}
+              name="Rainbow"
+              onClick={() => startConversationFromImage("rainbow")}
+            />
+            <AiImage
+              back={earthImage}
+              name="Earth"
+              onClick={() => startConversationFromImage("earth")}
+            />
+            <AiImage
+              back={socratesImage}
+              name="Socrates"
+              onClick={() => startConversationFromImage("socrates")}
+            />
+            <AiImage
+              back={galileoImage}
+              name="Galileo"
+              onClick={() => startConversationFromImage("galileo")}
+            />
+            <AiImage
+              back={teslaImage}
+              name="Tesla"
+              onClick={() => startConversationFromImage("Nikola Tesla")}
+            />
+            <AiImage
+              back={newtonImage}
+              name="Isaac Newton"
+              onClick={() => startConversationFromImage("Isaac Newton")}
+            />
+            <AiImage
+              back={adaImage}
+              name="Ada Lovelace"
+              onClick={() => startConversationFromImage("Ada Lovelace")}
+            />
+            <AiImage
+              back={rosalindImage}
+              name="Rosalind Franklin"
+              onClick={() => startConversationFromImage("Rosalind Franklin")}
+            />
+            <AiImage
+              back={energyImage}
+              name="Mass-energy equivalence"
+              onClick={() =>
+                startConversationFromImage("Mass-energy equivalence")
+              }
+            />
+            <AiImage
+              back={atomImage}
+              name="Atom"
+              onClick={() => startConversationFromImage("atom")}
+            />
+            <AiImage
+              back={caffeineImage}
+              name="Caffeine"
+              onClick={() => startConversationFromImage("caffeine")}
+            />
+            <AiImage
+              back={cellImage}
+              name="Cell"
+              onClick={() => startConversationFromImage("cell (biology)")}
+            />
+            <AiImage
+              back={sunImage}
+              name="Sun"
+              onClick={() => startConversationFromImage("sun")}
+            />
+            <AiImage
+              back={shakespeareImage}
+              name="Shakespeare"
+              onClick={() => startConversationFromImage("shakespeare")}
+            />
           </div>
           <ReactPlayer
             style={{

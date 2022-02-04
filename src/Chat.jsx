@@ -1,11 +1,11 @@
+import React, { useState } from "react";
 import axios from "axios";
 import { Wave } from "better-react-spinkit";
-import React, { useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import AnimatedTypingText from "./AnimatedTypingText";
-import backButton from "./ArrowLeft.svg";
 import { senderName } from "./Home";
-import "./ChatWindow.css";
+
+import backButton from "./assets/svg/ArrowLeft.svg";
 
 const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
   const [currentMessage, setCurrentMessage] = useState("");
