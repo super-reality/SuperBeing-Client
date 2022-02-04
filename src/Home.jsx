@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
-import { Link } from "react-router-dom";
 import Chat from "./Chat";
 import { isJson } from "./utils";
 import { v4 as uuidv4 } from "uuid";
@@ -145,7 +144,7 @@ const App = () => {
           <div style={{ marginTop: "2em" }}>
             <b>Try talking to these AIs</b>
           </div>
-          <div className="flex-container">
+          <div className="ais-container">
             <AiImage
               back={treeImage}
               name="Tree"
@@ -247,13 +246,6 @@ const App = () => {
             }}
             url="https://www.youtube.com/watch?v=Ar54k0sMWe0"
           />
-          <div className="EditorLinks">
-            <span>
-              <Link to="/admin" className="btn btn-primary">
-                admin
-              </Link>
-            </span>
-          </div>
         </div>
       )}
     </div>

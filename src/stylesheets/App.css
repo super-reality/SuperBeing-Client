@@ -13,26 +13,13 @@ body {
   padding: 0%;
 }
 
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
 #root {
   width: 100vw;
-}
-
-.EditorLinks {
-  max-width: 640px;
-  width: calc(100% - 4em);
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-}
-
-@media (max-width: 600px) {
-  .EditorLinks {
-    flex-direction: column;
-  }
-
-  .EditorLinks span {
-    margin-bottom: 2em;
-  }
 }
 
 .background {
@@ -191,7 +178,6 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-
 
 .hide {
   opacity: 0 !important;

@@ -6,6 +6,7 @@ import "typeface-roboto";
 import "./stylesheets/App.css";
 import "./stylesheets/ChatWindow.css";
 import "./stylesheets/Home.css";
+import "./stylesheets/TopNav.css";
 
 ReactDOM.render(
   <React.StrictMode>

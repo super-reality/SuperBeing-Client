@@ -1,0 +1,32 @@
+.top-nav-container {
+  width: 100%;
+  background-color: #ffffffdb;
+  height: 2em;
+  display: flex;
+  position: fixed;
+  z-index: 200;
+}
+
+.top-nav-options-container {
+  display: flex;
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+  justify-content: end;
+}
+
+.top-nav-option {
+  cursor: pointer;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 0.75em;
+  line-height: 1em;  
+  text-align: center;
+  color: #4666C9;
+  margin: 0 0.66em;
+}
+
+.top-nav-option:hover {
+  text-decoration: underline;
+}
