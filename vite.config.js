@@ -10,6 +10,9 @@ const reactSvgPlugin = require('vite-plugin-react-svg');
 export default defineConfig({
   plugins: [reactSvgPlugin(), reactRefresh(), env({ prefix: 'VITE_' })],
   
+  optimizeDeps: {
+    exclude: ["stream"]
+  },
   server: {
     fs: {
       allow: ["src", "./"]

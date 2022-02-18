@@ -6,6 +6,7 @@ import AnimatedTypingText from "./AnimatedTypingText";
 import { senderName } from "./Home";
 
 import backButton from "./assets/svg/ArrowLeft.svg";
+import singleton from "./speechUtils";
 
 const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -13,6 +14,56 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
   const [firstLoad, setFirstLoad] = useState(false);
   const [firstMessage, setFirstMessage] = useState(false);
   const [typing, setTyping] = useState(false);
+  const [recording, setRecording] = useState(false);
+
+  window.onbeforeunload = () => {
+    if (recording && !singleton.getInstance().streamStreaming) {
+      singleton.getInstance().socket?.emit("endGoogleCloudStream", "");
+    }
+  };
+
+  const startRecording = async () => {
+    setRecording(true);
+    singleton.getInstance().initRecording(async (text) => await sendMessageWithText(text));
+  };
+  const stopRecording = () => {
+    singleton.getInstance().stopRecording();
+    setRecording(false);
+  };
+
+  const sendMessageWithText = async (test) => {
+    if (!agentName) {
+      console.log("Not sending message, not yet connected");
+    }
+    setTyping(true);
+
+    if (test) {
+      const messageData = {
+        message: test,
+        isAgent: false,
+      };
+
+      const body = {
+        sender: senderName,
+        agent: agentName,
+        command: test,
+      };
+      axios
+        .post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body)
+        .then((res) => {
+          console.log("response is", res);
+          const messageData = {
+            message: (res && res.data && res.data.result) || agentName,
+            isAgent: true,
+          };
+          setMessageList((list) => [...list, messageData]);
+          setTyping(false);
+        });
+
+      setMessageList((list) => [...list, messageData]);
+      setCurrentMessage("");
+    }
+  };
 
   const sendMessage = async () => {
     if (!agentName) {
@@ -127,7 +178,15 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
               }}
             />
             <button onClick={sendMessage} />
+            <br />
           </div>
+          <button
+            onClick={recording ? stopRecording : startRecording}
+            type="button"
+          >
+            {!recording ? "Record" : "Stop Recording"}
+          </button>
+          <br />
         </div>
       ) : null}
     </div>
