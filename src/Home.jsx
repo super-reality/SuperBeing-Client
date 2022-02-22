@@ -45,45 +45,21 @@ const App = () => {
       `${process.env.VITE_SERVER_CONNECTION_URL}/execute`,
       body
     );
-    setStartingMessage(res.data.startingMessage);
-    var x = new XMLHttpRequest();
-    x.open(
-      "GET",
-      (process.env.VITE_SERVER_CORS_URL.endsWith("/")
-        ? process.env.VITE_SERVER_CORS_URL
-        : process.env.VITE_SERVER_CORS_URL + "/") +
-        `https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages&piprop=original&titles=${
-          res.data?.result?.title ? res.data.result.title : body.agent
-        }`
-    );
-    x.onload = x.onerror = function () {
-      let res = "";
-      if (
-        x &&
-        x.responseText &&
-        x.responseText.length > 0 &&
-        isJson(x.responseText)
-      ) {
-        const json = JSON.parse(x.responseText).query;
-        if (json) {
-          const pages = json.pages;
-          if (pages && pages.length > 0) {
-            const original = pages[0].original;
-            if (original) {
-              res = original.source;
-            }
-          }
-        }
+    setStartingMessage(res.data.defaultGreeting);
+    const resp = await axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/get_agent_image`, {
+      params:
+      {
+        agent: res.data?.result?.title ? res.data.result.title : body.agent
       }
+    })
 
-      if (!res || res.length <= 0) {
-        res = "/Logo.png";
-      }
+    let _res = resp.data
+    if (!_res || _res.length <= 0) {
+      _res = "/Logo.png";
+    }
 
-      setFormInputs({ agentName: agentName });
-      setAgentImage(res);
-    };
-    x.send();
+    setFormInputs({ agentName: agentName });
+    setAgentImage(_res);
   };
 
   const onChange = (e) =>

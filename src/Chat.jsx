@@ -31,22 +31,22 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
     setRecording(false);
   };
 
-  const sendMessageWithText = async (test) => {
+  const sendMessageWithText = async (msg) => {
     if (!agentName) {
       console.log("Not sending message, not yet connected");
     }
     setTyping(true);
 
-    if (test) {
+    if (msg) {
       const messageData = {
-        message: test,
+        message: msg,
         isAgent: false,
       };
 
       const body = {
         sender: senderName,
         agent: agentName,
-        command: test,
+        command: msg,
       };
       axios
         .post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body)
@@ -87,7 +87,7 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
         .then((res) => {
           console.log("response is", res);
           const messageData = {
-            message: (res && res.data && res.data.result) || agentName,
+            message: res.data.message || 'error',
             isAgent: true,
           };
           setMessageList((list) => [...list, messageData]);
