@@ -7,7 +7,6 @@ export default function TopNav() {
   return (
     <div className="top-nav-container">
       <div className="top-nav-options-container">
-      <div className="top-bar"><FontAwesomeIcon icon="fa-solid fa-envelope" /> <span>SuperReality.com</span></div>
         <div className="top-nav-option" onClick={() => navigate("/admin")}>
           ADMIN
         </div>
