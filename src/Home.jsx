@@ -4,7 +4,6 @@ import ReactPlayer from "react-player";
 import Chat from "./Chat";
 import { isJson } from "./utils";
 import { v4 as uuidv4 } from "uuid";
-
 export const id = uuidv4();
 export const senderName = "Guest_" + id;
 
