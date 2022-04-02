@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+/* @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
 
 .App {
   width: 100vw;
@@ -19,7 +19,7 @@ a {
 }
 
 #root {
-  width: 100vw;
+  width: 100%;
 }
 
 .background {
@@ -114,36 +114,8 @@ a {
   position: absolute;
 }
 
-.joinChatContainer {
-  flex-direction: column;
-  text-align: center;
-  vertical-align: middle;
-  width: 100%;
-  position: absolute;
-}
 
-.mainInput {
-  max-width: 100%;
-  width: 26em;
-  height: 2em;
-  margin: 0 auto;
-  display: flex;
-  position: relative;
-}
 
-.mainInput input {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  border: 2px solid #ccc;
-  border-radius: 2em;
-  font-size: 16px;
-  text-align: center;
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: middle;
-  position: absolute;
-}
 
 .mainInput button {
   width: 1.5em;
@@ -181,4 +153,4 @@ a {
 
 .hide {
   opacity: 0 !important;
-}
+} */
