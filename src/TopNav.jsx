@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from '/src/assets/images/Logo.png'; // gives image path
+import Logo from '/src/assets/images/Logo.png';
+import bannerImage from 'src/assets/images/Super-reality-bg.jpg';
 
 export default function TopNav() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export default function TopNav() {
         </div>
       </div>
       <div className="banner" id="#home">
-        <img className="img-fluid" src="src/assets/images/Super-reality-bg.jpg" />
+        <img src={bannerImage} className="img-fluid" alt="banner image" />
         <nav className="navbar navbar-expand-lg menu-bar">
           <div className="container">
             <div className="row">
