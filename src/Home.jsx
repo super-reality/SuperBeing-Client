@@ -26,6 +26,14 @@ import cellImage from "./assets/images/cell.png";
 import sunImage from "./assets/images/sun.png";
 import shakespeareImage from "./assets/images/shakespeare.png";
 import AiImage from "./AiImage";
+import gradientArrow from '/src/assets/images/gradient-arrow.png';
+import aboutImage from '/src/assets/images/about-us-img.png';
+import gradientSearch from '/src/assets/images/gradient-search.png';
+import workImage from '/src/assets/images/we-work-img.png';
+import discord from '/src/assets/images/discord.png';
+import facebook from '/src/assets/images/fb.png';
+import telegram from '/src/assets/images/telegram.png';
+import twitter from '/src/assets/images/twitter.png';
 
 const App = () => {
   const [formInputs, setFormInputs] = useState({ agentName: "" });
@@ -101,18 +109,18 @@ const App = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-5 text-center wow fadeInLeft animated" data-wow-duration="1000ms" data-wow-delay="600ms">
-              <div className="about_img"><img className="img-fluid" src="/src/assets/images/about-us-img.png " /></div>
+              <div className="about_img"><img className="img-fluid" src={aboutImage} alt="about" /></div>
             </div>
             <div className="col-lg-7 common-padding wow fadeInRight animated" data-wow-duration="1000ms" data-wow-delay="600ms">
               <h4 className="gradient-text mb-0">About us</h4>
               <h1 className="black-heading">Our Vision and Mission</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leopulvinar dapibus leo. dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo orem ipsum dolor sit ame orem ipsum dolor sit amet , luctus nec ullamcorper mattis, pulvinar dapibus leo orem ipsum dolor sit ame orem ipsum dolor sit amet</p>
               <ul className="gradient-arrow list-unstyled mt-4 mb-0 d-flex flex-column">
-                <li><img className="img-fluid" src="/src/assets/images/gradient-arrow.png " /><p>Branding the latest marketing agency</p></li>
-                <li> <img className="img-fluid" src="/src/assets/images/gradient-arrow.png " /><p>Branding the latest marketing agency</p></li>
-                <li> <img className="img-fluid" src="/src/assets/images/gradient-arrow.png " /><p>Branding the latest marketing agency</p></li>
-                <li> <img className="img-fluid" src="/src/assets/images/gradient-arrow.png " /><p>Branding the latest marketing agency</p></li>
-                <li> <img className="img-fluid" src="/src/assets/images/gradient-arrow.png " /><p>Branding the latest marketing agency</p></li>
+                <li><img className="img-fluid" src={gradientArrow} alt="arrow" /><p>Branding the latest marketing agency</p></li>
+                <li> <img className="img-fluid" src={gradientArrow} alt="arrow" /><p>Branding the latest marketing agency</p></li>
+                <li> <img className="img-fluid" src={gradientArrow} alt="arrow" /><p>Branding the latest marketing agency</p></li>
+                <li> <img className="img-fluid" src={gradientArrow} alt="arrow" /><p>Branding the latest marketing agency</p></li>
+                <li> <img className="img-fluid" src={gradientArrow} alt="arrow" /><p>Branding the latest marketing agency</p></li>
               </ul>
             </div>
           </div>
@@ -135,7 +143,7 @@ const App = () => {
                     }}
                     onChange={onChange}
                   />
-                  <img className="img-fluid" src="/src/assets/images/gradient-search.png" onClick={startConversation} />
+                  <img className="img-fluid" src={gradientSearch} alt="search" onClick={startConversation} />
                 </div>
                 <h1 className="black-heading wow fadeInUp animated mb-5" data-wow-duration="1000ms" data-wow-delay="800ms">Try talking to these AIs</h1>
               </div>
@@ -304,7 +312,7 @@ const App = () => {
                 <ReactPlayer
                   url="https://www.youtube.com/watch?v=Ar54k0sMWe0"
                 />
-                <img src="/src/assets/images/we-work-img.png" />
+                <img src={workImage} alt="work" />
               </div>
             </div>
             <div className="col-lg-6 pt-4 pt-lg-0 ps-lg-5 wow fadeInRight animated animated" data-wow-duration="1000ms" data-wow-delay="600ms">
@@ -320,10 +328,10 @@ const App = () => {
       <div className="container">
         <div className="row common-padding">
           <h1 className="text-center black-heading wow mb-5 fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="600ms">Connect With Us</h1>
-          <div className="col-lg-3 col-md-6 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="800ms"><a className="discord" href="#"><img src="/src/assets/images/discord.png "/></a></div>
-          <div className="col-lg-3 col-md-6 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="1000ms"><a className="fb" href="#"><img src="/src/assets/images/fb.png" /></a></div>
-          <div className="col-lg-3 col-md-6 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="1200ms"><a className="telegram" href="#"><img src="/src/assets/images/telegram.png" /></a></div>
-          <div className="col-lg-3 col-md-6 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="1400ms"><a className="twitter" href="#"><img src="/src/assets/images/twitter.png" /></a></div>
+          <div className="col-lg-3 col-md-6 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="800ms"><a className="discord" href="#"><img src={discord} alt="discord" /></a></div>
+          <div className="col-lg-3 col-md-6 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="1000ms"><a className="fb" href="#"><img src={facebook} alt="fb" /></a></div>
+          <div className="col-lg-3 col-md-6 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="1200ms"><a className="telegram" href="#"><img src={telegram} alt="telegram" /></a></div>
+          <div className="col-lg-3 col-md-6 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="1400ms"><a className="twitter" href="#"><img src={twitter} alt="twitter" /></a></div>
   
         </div>
       </div>
