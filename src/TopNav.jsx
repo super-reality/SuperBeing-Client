@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from '/src/assets/images/Logo.png';
-import bannerImage from 'src/assets/images/Super-reality-bg.jpg';
+import bannerImage from '/src/assets/images/Super-reality-bg.jpg';
 
 export default function TopNav() {
   const navigate = useNavigate();
