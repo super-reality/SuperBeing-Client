@@ -1,7 +1,7 @@
 /*!
   * Bootstrap v5.0.2 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+  * Licensed under Super-reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core')) :
@@ -34,7 +34,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): dom/selector-engine.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
 
@@ -105,7 +105,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): util/index.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
 
@@ -405,7 +405,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): dom/event-handler.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -694,7 +694,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): dom/data.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
 
@@ -748,7 +748,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): base-component.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -814,7 +814,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): alert.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -922,7 +922,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): button.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -993,7 +993,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): dom/manipulator.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   function normalizeData(val) {
@@ -1067,7 +1067,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): carousel.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -1612,7 +1612,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): collapse.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -1967,7 +1967,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): dropdown.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -2444,7 +2444,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): util/scrollBar.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
@@ -2548,7 +2548,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): util/backdrop.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
   const Default$6 = {
@@ -2671,7 +2671,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): modal.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -3110,7 +3110,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): offcanvas.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -3368,7 +3368,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): util/sanitizer.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   const uriAttrs = new Set(['background', 'cite', 'href', 'itemtype', 'longdesc', 'poster', 'src', 'xlink:href']);
@@ -3481,7 +3481,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): tooltip.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -4169,7 +4169,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): popover.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -4318,7 +4318,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): scrollspy.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -4569,7 +4569,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): tab.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -4767,7 +4767,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): toast.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   /**
@@ -4992,7 +4992,7 @@
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): index.umd.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * Licensed under Super-Reality (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
   var index_umd = {
