@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Logo from '/src/assets/images/Logo.png'; // gives image path
 
 export default function TopNav() {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ export default function TopNav() {
                     <span className="navbar-toggler-icon mb-0"></span>
                   </button>
                   <div className="website-logo">
-                    <img src="/src/assets/images/Logo.png" className="img-fluid" alt="logo" />
+                  <img src={Logo} className="img-fluid" alt="this is logo image" />
                   </div>
                 </div>
                 <div id="navbarCollapse" className="col-lg-10 justify-content-end collapse navbar-collapse">
