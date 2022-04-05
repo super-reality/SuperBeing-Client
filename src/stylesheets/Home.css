@@ -36,6 +36,11 @@ h6 {
   font-weight: bold;
   text-transform: capitalize;
 }
+.navbar-toggler:focus {
+  text-decoration: none;
+  outline: 0;
+  box-shadow: none;
+}
 
 .black-heading {
   color: #393939;

@@ -1,24 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
-	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/stylesheets/bootstrap.css" >
-    <link rel="stylesheet" href="/src/stylesheets/animate.min.css" >
 
-    <title>Super Being | Super Reality Labs</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    
-    
-    <script type="module" src="/src/main.jsx"></script>
-    <script src="/src/js/bootstrap.js"></script>
-    <script src="/src/js/jquery.min.js"></script>
-    <script src="/src/js/wow.min.js"></script>
-    
-   
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" />
+
+
+  <title>Super Being | Super Reality Labs</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+
+  <script type="module" src="/src/main.jsx"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://pagecdn.io/lib/wow/1.1.2/wow.js" crossorigin="anonymous"></script>
+  <script>
+    WOW = new WOW({
+      animateClass: 'animated',
+      offset: 100,
+      callback: function (box) {
+        console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+      }
+    });
+    WOW.init();
+    document.getElementById('').onclick = function () {
+      var section = document.createElement('section');
+      section.className = 'section--purple wow fadeInDown';
+      this.parentNode.insertBefore(section, this);
+    };
+  </script>
+  <script>
+    $(window).scroll(function () {
+      var scroll = $(window).scrollTop();
+      if (scroll >= 300) {
+        $("#back-to-top").addClass("show");
+      } else {
+        $("#back-to-top").removeClass("show");
+      }
+    });
+
+    $('#back-to-top').on('click', function (e) {
+      e.preventDefault();
+      $('html,body').animate({
+        scrollTop: 0
+      }, 700);
+    });
+
+    $("a[href^='#']").click(function (e) {
+      e.preventDefault();
+
+      var position = $($(this).attr("href")).offset().top - 55;
+
+      $("body, html").animate({
+        scrollTop: position
+      } /* speed */ );
+    });
+  </script>
+
+</body>
+
 </html>

@@ -1,12 +1,21 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import Popper from "popper.js";
+
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "typeface-roboto";
 
+
 import "./stylesheets/App.css";
 import "./stylesheets/ChatWindow.css";
 import "./stylesheets/Home.css";
 import "./stylesheets/TopNav.css";
+
+
+   
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,3 +23,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
