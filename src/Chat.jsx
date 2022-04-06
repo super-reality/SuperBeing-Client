@@ -111,15 +111,13 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
 
   return (
     <div className="chat-window">
+      <i className="fa fa-times close-btn" aria-hidden="true"
+        onClick={() => handleClick()}>
+      </i>
       <div className="chat-title">
-        <img
-          className="chat-back"
-          src={backButton}
-          onClick={() => handleClick()}
-        />
         {agentName && (
           <div className="chat-talking-to">
-            Talking to <b>{agentName}</b>
+            <h1>Talking to <b>{agentName}</b></h1>
           </div>
         )}
       </div>
@@ -132,7 +130,11 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
                 <div className="message" key={idx}>
                   {messageContent.isAgent ? (
                     <div className="message-content-agent">
-                      <img src={agentImage} className="image-chat" />
+                      <div className="gradient-border">
+                        <img src={agentImage} className="image-chat" />
+
+                        {/* <img src="src/assets/images/ant.png" className="image-chat" /> */}
+                      </div>
                       <div className="message-text">
                         {messageContent.message}
                       </div>
@@ -142,7 +144,9 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
                       <div className="message-text">
                         {messageContent.message}
                       </div>
-                      <img src="User_Icon.svg" className="image-chat" />
+                      <div className="gradient-border">
+                        <img src="User_Icon.svg" className="image-chat" />
+                      </div>
                     </div>
                   )}
                 </div>
@@ -154,42 +158,48 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
             <Wave
               className="loadingSpinner"
               size={100}
-              style={{ marginLeft: "auto", marginRight: "auto" }}
             />
           </>
         )}
       </div>
       {firstMessage ? (
         <div className="chat-footer">
-          {typing ? (
-            <i style={{ marginBottom: "8px" }}>
-              <AnimatedTypingText text={agentName + " is typing"} />
-            </i>
-          ) : null}
-          <div className="mainInput" style={{ width: "100%" }}>
-            <input
-              type="text"
-              name="message"
-              placeholder="What would you like to say?"
-              value={currentMessage}
-              onChange={(e) => setCurrentMessage(e.target.value)}
-              onKeyPress={(event) => {
-                event.key === "Enter" && sendMessage();
-              }}
-            />
-            <button onClick={sendMessage} />
+          <div className="typing-wrap">
+            {typing ? (
+              <i style={{ marginBottom: "8px" }}>
+                <AnimatedTypingText text={agentName + " is typing"} />
+              </i>
+            ) : null}
+          </div>
+          <div className="input-wrap">
+            <div className="mainInput">
+              <input
+                type="text"
+                name="message"
+                placeholder="What would you like to say?"
+                value={currentMessage}
+                onChange={(e) => setCurrentMessage(e.target.value)}
+                onKeyPress={(event) => {
+                  event.key === "Enter" && sendMessage();
+                }}
+              />
+              <button className="send-btn" onClick={sendMessage} >
+                <img src="/src/assets/images/send-btn.png" />
+              </button>
+              <br />
+            </div>
+            <button className="record-btn"
+              onClick={recording ? stopRecording : startRecording}
+              type="button"
+            >
+              {!recording ? "Record" : "Stop Recording"}
+            </button>
             <br />
           </div>
-          <button
-            onClick={recording ? stopRecording : startRecording}
-            type="button"
-          >
-            {!recording ? "Record" : "Stop Recording"}
-          </button>
-          <br />
         </div>
       ) : null}
     </div>
+
   );
 };
 

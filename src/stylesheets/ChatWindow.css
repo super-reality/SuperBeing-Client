@@ -1,5 +1,5 @@
 .ChatWrapper {
-  position: absolute;
+  position: fixed;
   display: flex;
   width: 100%;
   height: 100%;
@@ -17,27 +17,29 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: rgba(0,0,0,0.65);
+  background-color: rgba(0, 0, 0, 0.65);
 }
 
 .chat-window {
   position: relative;
-  width: 80%;
-  height: 80vh;
-  border-radius: 1em;
+  width: 60%;
+  height: 85vh;
+  border-radius: 7px;
   background-color: #fff;
-  border: 2px solid #ccc;
-  padding: 2%;
+  border: 1px solid #ccc;
+  padding: 3% 5% 5% 5%;
   margin: auto;
   flex-direction: column;
   display: flex;
+  background-image: url(/src/assets/images/Our-AI-bg.png);
+  background-size: cover;
 }
 
 .chat-window .chat-title {
   display: flex;
   width: 100%;
   position: relative;
-  height: 3em;
+  margin-bottom: 30px;
 }
 
 .chat-window .chat-title .chat-back {
@@ -54,6 +56,11 @@
 .chat-window .chat-title .chat-talking-to {
   margin: auto;
   text-align: center;
+  color: #393939;
+}
+
+.chat-window .chat-title .chat-talking-to h1 {
+  font-weight: normal;
 }
 
 .chat-window p {
@@ -86,48 +93,50 @@
 }
 
 .image-chat {
-  width: 4em;
-  height: 4em;
-  min-width: 4em;
-  min-height: 4em;
+  max-width: 59px;
+  height: 59px;
   border-radius: 100%;
+  background-color: #fff;
 }
 
-.message-content-agent .image-chat {
-  border: 2px solid red;
-  margin-right: 1em;
+.gradient-border {
+  background: linear-gradient(100deg, rgba(30, 189, 234, 1) 1%, rgba(194, 114, 237, 1) 47%, rgba(254, 157, 40, 1) 100%);
+  width: 3.9rem;
+  height: 3.9rem;
+  border-radius: 100%;
+  padding: 2px;
 }
 
-.message-content-user .image-chat {
-  object-fit: cover;
-  margin-left: 1em;
-}
 
-.chat-window .chat-body .message .message-content-agent {
+
+.chat-window .chat-body .message>div {
   display: flex;
-  width: calc(100% - 4em);
   height: auto;
-  min-height: 6em;
   color: #777777;
   overflow-wrap: break-word;
   word-break: break-word;
+  max-width: 75%;
+  min-width: auto !important;
+}
+
+.chat-window .chat-body .message .message-content-agent {
   text-align: left;
 }
 
 .chat-window .chat-body .message .message-content-user {
-  display: flex;
-  width: calc(100% - 4em);
-  height: auto;
-  min-height: 6em;
-  color: #777777;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  text-align: right;
+  margin-left: auto;
 }
 
 .message-text {
   width: auto;
   flex-grow: 2;
+  display: flex;
+  border: 1px solid #393939;
+  border-radius: 130px;
+  margin: 9px 9px 9px 25px;
+  align-items: center;
+  padding: 0px 20px;
+  background-color: #fff;
 }
 
 .chat-window .chat-body .message>div {
@@ -138,7 +147,64 @@
 
 .chat-window .chat-footer {
   flex-direction: column;
-  height: 5em;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-window .chat-footer .mainInput {
+  display: flex;
+  align-items: center;
+  width: 75%;
+  border: 1px solid #393939;
+  border-radius: 140px;
+  padding: 6px 20px;
+  background-color: #fff;
+}
+.mainInput .send-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.chat-window .chat-footer input {
+  flex: 1;
+  border: none;
+  outline:none !important
+}
+.input-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.typing-wrap {
+  width: 100%;
+}
+.record-btn {
+  background: linear-gradient(100deg, rgba(30, 189, 234, 1) 1%, rgba(194, 114, 237, 1) 47%, rgba(254, 157, 40, 1) 100%);
+    transition: 500ms linear;
+    border-color: #fff;
+    border: 1px solid #58a3eb;
+    border-radius: 29px;
+    padding: 9px 35px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #393939;
+    margin-left: auto;
+}
+.close-btn {
+  width: 35px;
+  height: 35px;
+  right: -13px;
+  top: -13px;
+  background: linear-gradient(100deg, rgba(30, 189, 234, 1) 1%, rgba(194, 114, 237, 1) 47%, rgba(254, 157, 40, 1) 100%);
+  border-radius: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  box-shadow: 0px 2px 3px rgb(0 0 0 / 25%);
+  cursor: pointer;
 }
