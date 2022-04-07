@@ -55,7 +55,7 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
         .then((res) => {
           console.log("response is", res);
           const messageData = {
-            message: (res && res.data && res.data.result) || agentName,
+            message: res.data.message || 'error',
             isAgent: true,
           };
           setMessageList((list) => [...list, messageData]);
