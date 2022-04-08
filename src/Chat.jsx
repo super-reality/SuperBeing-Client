@@ -5,7 +5,7 @@ import ScrollToBottom from "react-scroll-to-bottom";
 import AnimatedTypingText from "./AnimatedTypingText";
 import { senderName } from "./Home";
 
-import backButton from "./assets/svg/ArrowLeft.svg";
+
 import sendImage from '/src/assets/images/send-btn.png';
 
 import singleton from "./speechUtils";

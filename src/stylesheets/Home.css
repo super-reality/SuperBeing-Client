@@ -48,6 +48,9 @@ h6 {
   font-size: 3.2vw;
 }
 
+.wrapper{
+  overflow-x: hidden;
+}
 
 /* Top-navbar */
 
@@ -607,4 +610,6 @@ a#back-to-top {
   .message-text {
     margin: 5px 9px 5px 25px;
   }
+
+
 }
