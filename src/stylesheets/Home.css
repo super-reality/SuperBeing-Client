@@ -48,7 +48,7 @@ h6 {
   font-size: 3.2vw;
 }
 
-.wrapper{
+.wrapper {
   overflow-x: hidden;
 }
 
@@ -75,10 +75,6 @@ nav .row {
 .top-bar i:hover {
   transition: 500ms;
   transform: scale(1.2);
-}
-
-header {
-  overflow-x: hidden;
 }
 
 .header ul li a,
@@ -158,13 +154,13 @@ li.nav-link.active a {
   color: rgba(30, 189, 234, 1);
 }
 
-.navbar-nav .nav-link.Admin {
+.navbar-nav .nav-link.Admin a {
   border: 1px solid #393939;
   border-radius: 29px;
   padding: 6px 24px;
 }
 
-li.nav-link.Admin:hover {
+li.nav-link.Admin a:hover {
   background: linear-gradient(100deg, rgba(30, 189, 234, 1) 1%, rgba(194, 114, 237, 1) 47%, rgba(254, 157, 40, 1) 100%);
   transition: 500ms linear;
   border-color: #fff;
@@ -175,12 +171,11 @@ li.nav-link.Admin.active a:after {
   display: none;
 }
 
-li.nav-link.Admin:hover a {
+li.nav-link.Admin a:hover{
   color: #fff;
 }
 
-.navbar-nav .nav-link,
-.navbar-nav .nav-link.Admin a {
+.navbar-nav .nav-link{
   padding: 0;
 }
 
@@ -457,13 +452,19 @@ a#back-to-top {
   }
 
   div#navbarCollapse {
-    width: 100%;
     margin-top: 10px;
-  }
+    position: absolute;
+    top: 95%;
+    left: 0;
+    right: 0;
+    padding-bottom: 15px;
+    background-color: #fff;
+}
 
   .menu-wrap.d-flex.align-items-center {
     flex-direction: column;
     z-index: 999;
+    position: relative;
   }
 
   .full-width {
@@ -611,5 +612,8 @@ a#back-to-top {
     margin: 5px 9px 5px 25px;
   }
 
+  .footer .black-heading {
+    font-size: 9vw;
+  }
 
 }
