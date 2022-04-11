@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Wave } from "better-react-spinkit";
 import ScrollToBottom from "react-scroll-to-bottom";
@@ -12,7 +12,6 @@ import singleton from "./speechUtils";
 const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
-  const [firstLoad, setFirstLoad] = useState(false);
   const [firstMessage, setFirstMessage] = useState(false);
   const [typing, setTyping] = useState(false);
   const [recording, setRecording] = useState(false);
@@ -102,15 +101,16 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
     }
   };
 
-  if (firstLoad === false && agentName) {
-    const messageData = {
-      message: startingMessage,
-      isAgent: true,
-    };
-    setMessageList((list) => [...list, messageData]);
-    setFirstLoad(true);
-    setFirstMessage(true);
-  }
+  useEffect(() => {
+    if (agentName && startingMessage && startingMessage !== "") {
+      const messageData = {
+        message: startingMessage,
+        isAgent: true,
+      };
+      setMessageList((list) => [...list, messageData]);
+      setFirstMessage(true);
+    }
+  }, [startingMessage]);
 
   return (
     <div className="chat-window">
