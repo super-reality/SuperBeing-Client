@@ -347,6 +347,7 @@ div#Our-Work {
   margin: auto;
   align-items: center;
   justify-content: center;
+  transition: 500ms linear;
 }
 
 .footer a:hover {
@@ -493,6 +494,9 @@ a#back-to-top {
   .navbar-nav .nav-link.active {
     background-color: #2cb7ea;
   }
+  .navbar-nav .nav-link.Admin:hover, .navbar-nav .nav-link.Admin.active {
+    background-color: transparent;
+}
 
   .navbar-nav .nav-link:hover a,
   .navbar-nav .nav-link.active a {

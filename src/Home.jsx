@@ -109,7 +109,6 @@ const App = () => {
         )
       }
       </div>
-      {pageState === 0 && (
         <div className="wrapper">
           <header className="main-header">
             <div className="top-bar">
@@ -239,10 +238,10 @@ const App = () => {
 
           <div id="Our-AI" className="joinChatContainer text-center common-padding">
             <div className="container">
-              <div className="row wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="600ms">
+              <div className="row">
                 <div className="col-12">
                   <div className="mainInput">
-                    <div className="search-bar">
+                    <div className="search-bar wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="600ms">
                       <input
                         type="text"
                         placeholder="Who or what do you want to talk to?"
@@ -255,7 +254,7 @@ const App = () => {
                       />
                       <img className="img-fluid" src={gradientSearch} alt="search" onClick={startConversation} />
                     </div>
-                    <h1 className="black-heading wow fadeInUp animated mb-5" data-wow-duration="1000ms" data-wow-delay="800ms">Try talking to these AIs</h1>
+                    <h1 className="black-heading wow fadeInDown animated mb-5" data-wow-duration="1000ms" data-wow-delay="800ms">Try talking to these AIs</h1>
                   </div>
 
                 </div>
@@ -449,7 +448,7 @@ const App = () => {
 
           <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
         </div>
-      )}
+      
     </div>
 
   );
