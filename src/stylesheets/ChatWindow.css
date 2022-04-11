@@ -103,6 +103,8 @@
   background: linear-gradient(100deg, rgba(30, 189, 234, 1) 1%, rgba(194, 114, 237, 1) 47%, rgba(254, 157, 40, 1) 100%);
   width: 3.9rem;
   height: 3.9rem;
+  min-width: 3.9rem;
+  min-height: 3.9rem;
   border-radius: 100%;
   padding: 2px;
 }
