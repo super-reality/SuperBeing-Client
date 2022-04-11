@@ -102,7 +102,7 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
   };
 
   useEffect(() => {
-    if (agentName && startingMessage && startingMessage !== "") {
+    if (startingMessage && startingMessage !== "") {
       const messageData = {
         message: startingMessage,
         isAgent: true,
