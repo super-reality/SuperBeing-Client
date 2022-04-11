@@ -5,8 +5,7 @@ import ScrollToBottom from "react-scroll-to-bottom";
 import AnimatedTypingText from "./AnimatedTypingText";
 import { senderName } from "./Home";
 
-
-import sendImage from '/src/assets/images/send-btn.png';
+import sendImage from "/src/assets/images/send-btn.png";
 
 import singleton from "./speechUtils";
 
@@ -26,7 +25,9 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
 
   const startRecording = async () => {
     setRecording(true);
-    singleton.getInstance().initRecording(async (text) => await sendMessageWithText(text));
+    singleton
+      .getInstance()
+      .initRecording(async (text) => await sendMessageWithText(text));
   };
   const stopRecording = () => {
     singleton.getInstance().stopRecording();
@@ -55,7 +56,7 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
         .then((res) => {
           console.log("response is", res);
           const messageData = {
-            message: res.data.message || 'error',
+            message: res.data.result || "error",
             isAgent: true,
           };
           setMessageList((list) => [...list, messageData]);
@@ -89,7 +90,7 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
         .then((res) => {
           console.log("response is", res);
           const messageData = {
-            message: res.data.message || 'error',
+            message: res.data.result || "error",
             isAgent: true,
           };
           setMessageList((list) => [...list, messageData]);
@@ -113,13 +114,17 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
 
   return (
     <div className="chat-window">
-      <i className="fa fa-times close-btn" aria-hidden="true"
-        onClick={() => handleClick()}>
-      </i>
+      <i
+        className="fa fa-times close-btn"
+        aria-hidden="true"
+        onClick={() => handleClick()}
+      ></i>
       <div className="chat-title">
         {agentName && (
           <div className="chat-talking-to">
-            <h1>Talking to <b>{agentName}</b></h1>
+            <h1>
+              Talking to <b>{agentName}</b>
+            </h1>
           </div>
         )}
       </div>
@@ -157,10 +162,7 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
           </ScrollToBottom>
         ) : (
           <>
-            <Wave
-              className="loadingSpinner"
-              size={100}
-            />
+            <Wave className="loadingSpinner" size={100} />
           </>
         )}
       </div>
@@ -185,12 +187,13 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
                   event.key === "Enter" && sendMessage();
                 }}
               />
-              <button className="send-btn" onClick={sendMessage} >
+              <button className="send-btn" onClick={sendMessage}>
                 <img src={sendImage} />
               </button>
               <br />
             </div>
-            <button className="record-btn"
+            <button
+              className="record-btn"
               onClick={recording ? stopRecording : startRecording}
               type="button"
             >
@@ -201,7 +204,6 @@ const Chat = ({ agentImage, agentName, handleClick, startingMessage }) => {
         </div>
       ) : null}
     </div>
-
   );
 };
 
