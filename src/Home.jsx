@@ -54,7 +54,7 @@ const App = () => {
       `${process.env.VITE_SERVER_CONNECTION_URL}/execute`,
       body
     );
-    setStartingMessage(res.data.defaultGreeting);
+    setStartingMessage(res.data.startingMessage);
     // const resp = await axios.get(`${process.env.VITE_SERVER_CONNECTION_URL}/get_agent_image`, {
     //   params:
     //   {
