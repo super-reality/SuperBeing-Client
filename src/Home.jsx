@@ -79,7 +79,7 @@ const App = () => {
       setPageState(1);
       await sendMessage(formInputs.agentName);
       setPageState(2);
-      setFormInputs({ agentName: "" });
+      setFormInputs({ agentName: formInputs.agentName });
     }
   };
 
