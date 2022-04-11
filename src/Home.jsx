@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import ReactPlayer from "react-player";
 import Chat from "./Chat";
 import { isJson } from "./utils";
@@ -71,17 +71,18 @@ const App = () => {
     // setAgentImage(_res);
   };
 
-  const onChange = (e) =>
-    setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
+  const onChange = useCallback(
+    (e) => setFormInputs({ ...formInputs, [e.target.name]: e.target.value }),
+    [formInputs]
+  );
 
-  const startConversation = async () => {
+  const startConversation = useCallback(async () => {
     if (formInputs.agentName !== null && formInputs.agentName !== "") {
       setPageState(1);
       await sendMessage(formInputs.agentName);
       setPageState(2);
-      setFormInputs({ agentName: formInputs.agentName });
     }
-  };
+  }, [formInputs]);
 
   const startConversationFromImage = async (ai_name, image = "/Logo.png") => {
     setPageState(1);
