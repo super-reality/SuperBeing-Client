@@ -243,7 +243,7 @@ const App = () => {
                   >
                     <div className="text-wrap">
                       <h1 className="heading gradient-text">super reality</h1>
-                      <h3 className="tagline">future of eductaion</h3>
+                      <h3 className="tagline">future of education</h3>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing
                         elit, sed do eiusmod tempor incididunt ut labore et
